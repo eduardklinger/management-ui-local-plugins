@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>org.amc.management</groupId>
+    <artifactId>management-backend</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../../../backend</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>my-org-plugin-backend</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>My Org Plugin :: Backend</name>
+
+  <properties>
+    <opencast.basedir>${project.basedir}/../..</opencast.basedir>
+    <!-- Parent expects ../docs; docs is at repo root so use ../../docs -->
+    <checkstyle.suppressions.file>${project.basedir}/../../../docs/checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.file>
+  </properties>
+
+  <description>Minimal backend JAR for the my-org-plugin frontend. Copies dist/ from .local-plugins/my-org-plugin and exposes it via Management-Plugin so the UI loads it from plugins.json.</description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <!-- Install deps from repo root; then build frontend (like episodes: install + build in POM) -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>pnpm install (repo root)</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>${project.basedir}/../../../node/node</executable>
+              <arguments>
+                <argument>${project.basedir}/../../../node/node_modules/pnpm/bin/pnpm.cjs</argument>
+                <argument>install</argument>
+              </arguments>
+              <workingDirectory>${project.basedir}/../../..</workingDirectory>
+              <environmentVariables>
+                <PATH>${project.basedir}/../../../node:${env.PATH}</PATH>
+              </environmentVariables>
+            </configuration>
+          </execution>
+          <execution>
+            <id>pnpm build frontend</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>${project.basedir}/../../../node/node</executable>
+              <arguments>
+                <argument>${project.basedir}/../../../node/node_modules/pnpm/bin/pnpm.cjs</argument>
+                <argument>run</argument>
+                <argument>build</argument>
+              </arguments>
+              <workingDirectory>${project.basedir}/..</workingDirectory>
+              <environmentVariables>
+                <PATH>${project.basedir}/../../../node:${env.PATH}</PATH>
+              </environmentVariables>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Copy frontend plugin to resources -->
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-frontend-plugin</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static/plugins/my-org</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../dist</directory>
+                  <includes>
+                    <include>my-plugin.mjs</include>
+                    <include>my-plugin.css</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Rename my-plugin.* to my-org.* so jar-plugin-loader finds them (it requests {path-last-segment}.mjs) -->
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>rename-plugin-files</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <copy file="${basedir}/target/classes/static/plugins/my-org/my-plugin.mjs"
+                      tofile="${basedir}/target/classes/static/plugins/my-org/my-org.mjs" failonerror="false"/>
+                <copy file="${basedir}/target/classes/static/plugins/my-org/my-plugin.css"
+                      tofile="${basedir}/target/classes/static/plugins/my-org/my-org.css" failonerror="false"/>
+                <delete file="${basedir}/target/classes/static/plugins/my-org/my-plugin.mjs" failonerror="false"/>
+                <delete file="${basedir}/target/classes/static/plugins/my-org/my-plugin.css" failonerror="false"/>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <configuration>
+          <instructions>
+            <Management-Plugin>my-org</Management-Plugin>
+            <!-- Subpath only: avoid conflict with management-ui-core which registers /management-ui -->
+            <Http-Alias>/management-ui/static/plugins/my-org</Http-Alias>
+            <Http-Classpath>/static/plugins/my-org</Http-Classpath>
+            <!-- No Java source; include static resources from target/classes -->
+            <Include-Resource>static/=target/classes/static</Include-Resource>
+          </instructions>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+</project>

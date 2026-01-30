@@ -1,0 +1,31 @@
+{
+  "name": "plugin-config",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "pluginMetadata": {
+    "id": "plugin-config",
+    "name": "Root Config",
+    "description": "Single root app config for .local-plugins (theme, pluginNamespace, URLs).",
+    "category": "config",
+    "icon": "Settings",
+    "workspaceDependencies": {
+      "@workspace/plugin-system": ">=1.0.0"
+    }
+  },
+  "main": "./dist/plugin-config.mjs",
+  "exports": { ".": "./dist/plugin-config.mjs" },
+  "files": ["dist"],
+  "scripts": {
+    "build": "vite build",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@workspace/plugin-system": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.6",
+    "typescript": "~5.5.4",
+    "vite": "^6.3.5"
+  }
+}

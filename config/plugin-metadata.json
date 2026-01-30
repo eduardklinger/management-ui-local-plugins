@@ -1,0 +1,11 @@
+{
+  "id": "plugin-config",
+  "name": "Root Config",
+  "description": "Single root app config for .local-plugins (theme, pluginNamespace, URLs).",
+  "version": "1.0.0",
+  "category": "config",
+  "extensionPoints": ["app:config"],
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0"
+  }
+}
