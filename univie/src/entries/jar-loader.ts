@@ -9,8 +9,6 @@
  */
 import { createPlugin } from "@workspace/plugin-system";
 import type { Plugin } from "@workspace/plugin-system";
-import { i18next } from "@workspace/i18n";
-
 import sidebarPlugin from "./sidebar";
 import footerPlugin from "./footer";
 import landingPagePlugin from "./landing-page";
@@ -29,15 +27,6 @@ type AppConfigLike = {
     pluginNamespace?: PluginNamespaceItem[];
   };
 };
-
-declare const __PLUGIN_BASE_URL__: string | undefined;
-
-const LOCALE_NAMESPACES = [
-  "univie-sidebar",
-  "univie-footer",
-  "univie-landing-page",
-  "univie-empty-state",
-];
 
 function getMergedConfig(manager: { getObjects: (type: string) => AppConfigLike[] }): AppConfigLike {
   const parts = manager.getObjects("app:config") || [];
@@ -68,44 +57,6 @@ function getEnabledTypesForNamespace(
   return new Set();
 }
 
-function getPluginBaseUrl(): string {
-  if (typeof __PLUGIN_BASE_URL__ === "string" && __PLUGIN_BASE_URL__.length > 0) {
-    return __PLUGIN_BASE_URL__;
-  }
-  try {
-    return new URL(import.meta.url).href.replace(/univie\.mjs(\?.*)?$/i, "");
-  } catch {
-    return "/";
-  }
-}
-
-async function loadPluginLocales() {
-  if (typeof window === "undefined") return;
-
-  const base = getPluginBaseUrl().replace(/\/?$/, "/");
-  const localesBase = `${base}locales/`;
-  const current = (i18next.language || "en").split("-")[0] || "en";
-  const languages = Array.from(new Set([current, "en"]));
-
-  await Promise.all(
-    languages.flatMap((lang) =>
-      LOCALE_NAMESPACES.map(async (ns) => {
-        if (i18next.hasResourceBundle(lang, ns)) return;
-        try {
-          const response = await fetch(`${localesBase}${ns}/${lang}.json`, {
-            cache: "default",
-          });
-          if (!response.ok) return;
-          const data = (await response.json()) as Record<string, unknown>;
-          i18next.addResourceBundle(lang, ns, data, true, true);
-        } catch {
-          // ignore missing locale files
-        }
-      }),
-    ),
-  );
-}
-
 async function registerPlugin(manager: { register: (plugin: Plugin) => void | Promise<void> }, plugin: Plugin) {
   const result = manager.register(plugin);
   if (result != null && typeof (result as Promise<unknown>)?.then === "function") {
@@ -118,8 +69,6 @@ const plugin = createPlugin({
   type: "app",
   version: "1.0.0",
   async initialize(manager) {
-    await loadPluginLocales();
-
     const config = getMergedConfig(manager);
     const enabled = getEnabledTypesForNamespace(config, "univie");
 
