@@ -1,0 +1,49 @@
+{
+  "name": "plugin-tuwien",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "pluginMetadata": {
+    "id": "plugin-tuwien",
+    "name": "TU Wien",
+    "description": "TU Wien plugin: config, sidebar, footer, header, landing page, episodes/series actions, custom app.",
+    "category": "feature",
+    "icon": "Building2",
+    "workspaceDependencies": {
+      "@workspace/plugin-system": ">=1.0.0"
+    }
+  },
+  "main": "./dist/plugin-tuwien.mjs",
+  "exports": {
+    ".": "./dist/plugin-tuwien.mjs"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf dist && rm -rf dist-types && rm -rf target && rm -rf node_modules && rm -rf coverage && rm -f *.tsbuildinfo && rm -f tsconfig*.tsbuildinfo",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@workspace/app-runtime": "workspace:*",
+    "@workspace/i18n": "workspace:*",
+    "@workspace/plugin-system": "workspace:*",
+    "@workspace/query": "workspace:*",
+    "@workspace/router": "workspace:*",
+    "@workspace/ui": "workspace:*",
+    "@workspace/utils": "workspace:*",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.6",
+    "@types/react": "^18.0.0 || ^19.0.0",
+    "@types/react-dom": "^18.0.0 || ^19.0.0",
+    "@vitejs/plugin-react-swc": "^3.9.0",
+    "eslint": "^9.9.0",
+    "typescript": "~5.5.4",
+    "vite": "^6.3.5"
+  }
+}

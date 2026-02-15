@@ -1,0 +1,17 @@
+{
+  "id": "plugin-tuwien",
+  "name": "TU Wien",
+  "description": "TU Wien (Vienna University of Technology) plugin: config, sidebar, footer, header, landing page, table sidebar, upload ACL editor, episodes/series actions, custom app.",
+  "version": "1.0.0",
+  "author": {
+    "name": "TU Wien",
+    "url": "https://www.tuwien.ac.at"
+  },
+  "category": "feature",
+  "icon": "Building2",
+  "tags": ["tuwien", "university"],
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0"
+  }
+}
