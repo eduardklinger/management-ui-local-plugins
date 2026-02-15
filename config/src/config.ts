@@ -7,7 +7,14 @@ export const config = {
   app: {
     // Active theme: "univie" or "tuwien" (must match a theme in plugins/themes/ or .local-plugins/<name>/themes/)
     theme: "univie",
-    orgLogoUrl: "assets/univie/logo.png",
+    orgLogoUrl: (() => {
+      if (typeof window === "undefined") return "/management-ui/static/plugins/univie/assets/logo.png";
+      const base = window.location.pathname.startsWith("/management-ui") ? "/management-ui" : "";
+      const isDev =
+        window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+      const pluginBase = isDev ? `${base}/local-plugins/univie` : `${base}/static/plugins/univie`;
+      return `${pluginBase}/assets/logo.png`;
+    })(),
     faviconUrl: "/management-ui/assets/favicon/favicon.svg",
     pluginNamespace: [
       "core",
