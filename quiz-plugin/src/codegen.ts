@@ -1,0 +1,54 @@
+import process from "node:process";
+
+import type { CodegenConfig } from "@graphql-codegen/cli";
+
+const graphqlEndpoint = process.env["GRAPHQL_ENDPOINT"] || "http://localhost:8080/graphql";
+const graphqlHeaders: Record<string, string> = process.env["GRAPHQL_HEADERS"]
+  ? (JSON.parse(process.env["GRAPHQL_HEADERS"]) as Record<string, string>)
+  : {};
+
+const config: CodegenConfig = {
+  schema: [
+    {
+      [graphqlEndpoint]: {
+        headers: graphqlHeaders,
+      },
+    },
+  ],
+  overwrite: true,
+  documents: "./src/graphql/**/*.graphql",
+  emitLegacyCommonJSImports: false,
+  generates: {
+    "./src/gql-generated.ts": {
+      plugins: [
+        {
+          add: {
+            content:
+              'import type { UseQueryResult, UseSuspenseQueryResult } from "@tanstack/react-query";',
+          },
+        },
+        {
+          add: {
+            content: "/* eslint-disable */",
+          },
+        },
+        "typescript",
+        "typescript-operations",
+        "typescript-react-query",
+      ],
+      config: {
+        reactQueryVersion: 5,
+        legacyMode: false,
+        exposeFetcher: true,
+        exposeQueryKeys: true,
+        addSuspenseQuery: true,
+        skipTypename: true,
+        useTypeImports: true,
+        fetcher: {
+          func: "./fetcher#fetchData",
+        },
+      },
+    },
+  },
+};
+export default config;

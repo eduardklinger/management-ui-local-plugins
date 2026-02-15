@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>org.amc.management</groupId>
+    <artifactId>management-backend</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../../../backend</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>quiz-plugin-backend</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Quiz Plugin :: Backend</name>
+
+  <properties>
+    <opencast.basedir>${project.basedir}/../..</opencast.basedir>
+  </properties>
+
+  <description>Quiz plugin: GraphQL/REST backend and frontend bundle. Frontend lives in .local-plugins/quiz-plugin; build copies it into this JAR. Management-Plugin lets the core discover and load the plugin from plugins.json.</description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <!-- Install deps from repo root so plugin has workspace packages (when building with -f, root install may not have run) -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>pnpm install (repo root)</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>${project.basedir}/../../../node/node</executable>
+              <arguments>
+                <argument>${project.basedir}/../../../node/node_modules/pnpm/bin/pnpm.cjs</argument>
+                <argument>install</argument>
+              </arguments>
+              <workingDirectory>${project.basedir}/../../..</workingDirectory>
+              <environmentVariables>
+                <PATH>${project.basedir}/../../../node:${env.PATH}</PATH>
+              </environmentVariables>
+            </configuration>
+          </execution>
+          <execution>
+            <id>pnpm build frontend</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>${project.basedir}/../../../node/node</executable>
+              <arguments>
+                <argument>${project.basedir}/../../../node/node_modules/pnpm/bin/pnpm.cjs</argument>
+                <argument>run</argument>
+                <argument>build</argument>
+              </arguments>
+              <workingDirectory>${project.basedir}/..</workingDirectory>
+              <environmentVariables>
+                <PATH>${project.basedir}/../../../node:${env.PATH}</PATH>
+              </environmentVariables>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Copy frontend plugin to resources -->
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-frontend-plugin</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static/plugins/quiz</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../dist</directory>
+                  <includes>
+                    <include>quiz.mjs</include>
+                    <include>quiz.css</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <configuration>
+          <instructions>
+            <Export-Package>
+              org.opencastproject.quiz.plugin.*
+            </Export-Package>
+            <!-- So core discovers this JAR and loads the plugin from plugins.json -->
+            <Management-Plugin>quiz</Management-Plugin>
+            <Http-Alias>/management-ui/static/plugins/quiz</Http-Alias>
+            <Http-Classpath>/static/plugins/quiz</Http-Classpath>
+            <Include-Resource>static/=target/classes/static</Include-Resource>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <!-- Opencast GraphQL -->
+    <dependency>
+      <groupId>org.opencastproject</groupId>
+      <artifactId>opencast-graphql</artifactId>
+      <version>${opencast.version}</version>
+    </dependency>
+    
+    <!-- GraphQL Java -->
+    <dependency>
+      <groupId>com.graphql-java</groupId>
+      <artifactId>graphql-java</artifactId>
+      <version>${graphql.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.github.graphql-java</groupId>
+      <artifactId>graphql-java-annotations</artifactId>
+      <version>${graphql-annotations.version}</version>
+    </dependency>
+    
+    <!-- Opencast Services -->
+    <dependency>
+      <groupId>org.opencastproject</groupId>
+      <artifactId>opencast-index-service</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.opencastproject</groupId>
+      <artifactId>opencast-common</artifactId>
+    </dependency>
+    
+    <!-- OSGi -->
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.service.component</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.service.component.annotations</artifactId>
+      <version>${org.osgi.service.component.annotations.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    
+    <!-- JSON Processing (for Convex integration) -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+    </dependency>
+    
+    <!-- JAX-RS for REST endpoints -->
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.service.jaxrs</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.ws.rs</groupId>
+      <artifactId>jakarta.ws.rs-api</artifactId>
+    </dependency>
+    
+    <!-- HTTP Client: Using Java's native java.net.http (Java 11+) - no external dependencies needed! -->
+  </dependencies>
+</project>

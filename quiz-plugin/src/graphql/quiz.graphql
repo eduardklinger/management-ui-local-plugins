@@ -1,0 +1,38 @@
+# Quiz plugin – mutations (loaded by plugin codegen)
+
+mutation CreateQuiz($eventId: String!, $quiz: QuizInput!) {
+  quiz {
+    createQuiz(eventId: $eventId, quiz: $quiz) {
+      id
+      eventId
+      title
+      description
+      isActive
+      questions {
+        id
+        question
+        type
+        options
+        points
+      }
+    }
+  }
+}
+
+mutation SubmitQuiz($eventId: String!, $answers: QuizAnswersInput!) {
+  quiz {
+    submitQuiz(eventId: $eventId, answers: $answers) {
+      submissionId
+      score
+      maxScore
+      percentage
+      success
+      answerResults {
+        questionId
+        answer
+        isCorrect
+        points
+      }
+    }
+  }
+}
