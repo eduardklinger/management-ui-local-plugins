@@ -92,36 +92,32 @@
                 <resource>
                   <directory>${basedir}/../dist</directory>
                   <includes>
-                    <include>my-plugin.mjs</include>
-                    <include>my-plugin.css</include>
+                    <include>my-org.mjs</include>
+                    <include>my-org.css</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
               </resources>
             </configuration>
           </execution>
-        </executions>
-      </plugin>
-
-      <!-- Rename my-plugin.* to my-org.* so jar-plugin-loader finds them (it requests {path-last-segment}.mjs) -->
-      <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
           <execution>
-            <id>rename-plugin-files</id>
+            <id>copy-frontend-assets</id>
             <phase>generate-resources</phase>
             <goals>
-              <goal>run</goal>
+              <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <target>
-                <copy file="${basedir}/target/classes/static/plugins/my-org/my-plugin.mjs"
-                      tofile="${basedir}/target/classes/static/plugins/my-org/my-org.mjs" failonerror="false"/>
-                <copy file="${basedir}/target/classes/static/plugins/my-org/my-plugin.css"
-                      tofile="${basedir}/target/classes/static/plugins/my-org/my-org.css" failonerror="false"/>
-                <delete file="${basedir}/target/classes/static/plugins/my-org/my-plugin.mjs" failonerror="false"/>
-                <delete file="${basedir}/target/classes/static/plugins/my-org/my-plugin.css" failonerror="false"/>
-              </target>
+              <outputDirectory>${basedir}/target/classes/static/plugins/my-org/assets</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../dist/assets</directory>
+                  <includes>
+                    <include>**/*</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+              <skipIfMissing>true</skipIfMissing>
             </configuration>
           </execution>
         </executions>

@@ -14,7 +14,10 @@ import { shadcnPreset } from "@workspace/tailwind-config/shadcn-preset";
  */
 export default {
   presets: [shadcnPreset],
-  content: [],
+  content: [
+    "./index.html",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     extend: {
       // Add plugin-specific theme extensions here if needed

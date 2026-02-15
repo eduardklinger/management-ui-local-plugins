@@ -1,21 +1,17 @@
-
-
-
-
-
 /**
  * Plugin Styles
  *
- * This file imports Tailwind's base, components, and utilities.
+ * Tailwind v4: use @import "tailwindcss" to pull in base, components, and utilities.
  * All Tailwind classes used in your plugin components will be generated here.
  *
  * This CSS is bundled with your plugin and loaded automatically when
  * the plugin is imported (via `import "./styles/index.css"` in index.ts).
  */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Avoid Tailwind preflight overriding core app fonts */
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+@source "../**/*.{ts,tsx,js,jsx}";
 
 /**
  * Plugin-specific component styles
@@ -41,4 +37,3 @@
     @apply bg-gradient-to-r from-primary to-secondary;
   } */
 }
-
