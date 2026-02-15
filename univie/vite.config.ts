@@ -1,13 +1,14 @@
 /**
- * Vite config for University of Vienna plugin (community-plugin style).
- * Builds one .mjs per type (plugin-univie-sidebar.mjs, plugin-univie-footer.mjs, etc.)
- * so the core can load only the types listed in config (e.g. univie: { types: ["sidebar", "footer"] }).
+ * Vite config for University of Vienna plugin (single entry JAR build).
+ * Builds one .mjs (univie.mjs) that conditionally registers sub-plugins
+ * based on app.pluginNamespace["univie"].types.
  */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { resolve } from "path";
 
 const pluginRoot = __dirname;
+const pluginName = "univie";
 
 export default defineConfig({
   root: pluginRoot,
@@ -15,13 +16,9 @@ export default defineConfig({
 
   build: {
     lib: {
-      entry: {
-        "univie": resolve(pluginRoot, "src/entries/jar-loader.ts"),
-        "plugin-univie-sidebar": resolve(pluginRoot, "src/entries/sidebar.ts"),
-        "plugin-univie-footer": resolve(pluginRoot, "src/entries/footer.ts"),
-        "plugin-univie-landing-page": resolve(pluginRoot, "src/entries/landing-page.ts"),
-        "plugin-univie-app": resolve(pluginRoot, "src/entries/app.ts"),
-      },
+      entry: resolve(pluginRoot, "src/entries/jar-loader.ts"),
+      name: pluginName.replace(/-/g, "_"),
+      fileName: (format) => `${pluginName}.${format === "es" ? "mjs" : "js"}`,
       formats: ["es"],
     },
     outDir: "dist",
@@ -46,13 +43,18 @@ export default defineConfig({
       },
 
       output: {
-        entryFileNames: "[name].mjs",
         exports: "named",
         generatedCode: { constBindings: true },
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
           "react/jsx-runtime": "ReactJSXRuntime",
+        },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name && assetInfo.name.endsWith(".css")) {
+            return `${pluginName}.css`;
+          }
+          return assetInfo.name || "asset";
         },
       },
     },

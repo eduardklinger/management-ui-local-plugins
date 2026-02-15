@@ -20,7 +20,7 @@
     <checkstyle.suppressions.file>${project.basedir}/../../../docs/checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.file>
   </properties>
 
-  <description>JAR for the Univie plugin (.local-plugins/univie). Copies dist/ (univie.mjs + split chunks) and themes/. Core loads univie.mjs which dynamic-imports the rest.</description>
+  <description>JAR for the Univie plugin (.local-plugins/univie). Copies dist/ (univie.mjs) and themes/. Core loads univie.mjs which conditionally registers sub-plugins.</description>
 
   <build>
     <plugins>
@@ -98,6 +98,26 @@
             </configuration>
           </execution>
           <execution>
+            <id>copy-frontend-assets</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static/plugins/univie/assets</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../dist/assets</directory>
+                  <includes>
+                    <include>**/*</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+              <skipIfMissing>true</skipIfMissing>
+            </configuration>
+          </execution>
+          <execution>
             <id>copy-themes</id>
             <phase>generate-resources</phase>
             <goals>
@@ -114,6 +134,68 @@
                   <filtering>false</filtering>
                 </resource>
               </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-assets</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static/plugins/univie/assets</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../assets</directory>
+                  <includes>
+                    <include>**/*</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+              <skipIfMissing>true</skipIfMissing>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-locales</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static/plugins/univie/locales</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../implementations/sidebar/locales</directory>
+                  <includes>
+                    <include>**/*.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+                <resource>
+                  <directory>${basedir}/../implementations/footer/locales</directory>
+                  <includes>
+                    <include>**/*.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+                <resource>
+                  <directory>${basedir}/../implementations/landing-page/locales</directory>
+                  <includes>
+                    <include>**/*.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+                <resource>
+                  <directory>${basedir}/../implementations/empty-state/locales</directory>
+                  <includes>
+                    <include>*.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                  <targetPath>univie-empty-state</targetPath>
+                </resource>
+              </resources>
+              <skipIfMissing>true</skipIfMissing>
             </configuration>
           </execution>
         </executions>
