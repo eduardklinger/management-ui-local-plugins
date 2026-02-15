@@ -114,6 +114,53 @@
               </resources>
             </configuration>
           </execution>
+          <execution>
+            <id>copy-locales</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static/plugins/tuwien/locales</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../implementations/episodes/locales</directory>
+                  <includes>
+                    <include>**/*.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+                <resource>
+                  <directory>${basedir}/../implementations/series/locales</directory>
+                  <includes>
+                    <include>**/*.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+                <resource>
+                  <directory>${basedir}/../implementations/footer/locales</directory>
+                  <includes>
+                    <include>**/*.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+                <resource>
+                  <directory>${basedir}/../implementations/landing-page/locales</directory>
+                  <includes>
+                    <include>**/*.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+                <resource>
+                  <directory>${basedir}/../implementations/table-sidebar/locales</directory>
+                  <includes>
+                    <include>**/*.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
       <!-- Rename plugin-tuwien.mjs to tuwien.mjs so jar-plugin-loader finds it -->
@@ -142,6 +189,7 @@
         <configuration>
           <instructions>
             <Management-Plugin>tuwien</Management-Plugin>
+            <Management-Plugin-I18n>tuwien-episodes, tuwien-series, tuwien-footer, tuwien-landing-page, tuwien-acl</Management-Plugin-I18n>
             <Http-Alias>/management-ui/static/plugins/tuwien</Http-Alias>
             <Http-Classpath>/static/plugins/tuwien</Http-Classpath>
             <Include-Resource>static/=target/classes/static</Include-Resource>
