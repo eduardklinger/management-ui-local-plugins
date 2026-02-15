@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>org.amc.management</groupId>
+    <artifactId>management-backend</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../../../backend</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>stats-dashboard-plugin-backend</artifactId>
+  <packaging>bundle</packaging>
+
+  <name>Stats Dashboard Plugin :: Backend</name>
+
+  <properties>
+    <checkstyle.suppressions.file>${project.basedir}/../../../docs/checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.file>
+  </properties>
+
+  <description>JAR for the stats-dashboard plugin (.local-plugins/stats-dashboard-plugin). Copies dist/ and exposes via Management-Plugin so the UI loads it from plugins.json.</description>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>pnpm install (repo root)</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>${project.basedir}/../../../node/node</executable>
+              <arguments>
+                <argument>${project.basedir}/../../../node/node_modules/pnpm/bin/pnpm.cjs</argument>
+                <argument>install</argument>
+              </arguments>
+              <workingDirectory>${project.basedir}/../../..</workingDirectory>
+              <environmentVariables>
+                <PATH>${project.basedir}/../../../node:${env.PATH}</PATH>
+              </environmentVariables>
+            </configuration>
+          </execution>
+          <execution>
+            <id>pnpm build frontend</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>${project.basedir}/../../../node/node</executable>
+              <arguments>
+                <argument>${project.basedir}/../../../node/node_modules/pnpm/bin/pnpm.cjs</argument>
+                <argument>run</argument>
+                <argument>build</argument>
+              </arguments>
+              <workingDirectory>${project.basedir}/..</workingDirectory>
+              <environmentVariables>
+                <PATH>${project.basedir}/../../../node:${env.PATH}</PATH>
+              </environmentVariables>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-frontend-plugin</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static/plugins/stats-dashboard</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../dist</directory>
+                  <includes>
+                    <include>stats-dashboard.mjs</include>
+                    <include>stats-dashboard.css</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <configuration>
+          <instructions>
+            <Management-Plugin>stats-dashboard</Management-Plugin>
+            <Http-Alias>/management-ui/static/plugins/stats-dashboard</Http-Alias>
+            <Http-Classpath>/static/plugins/stats-dashboard</Http-Classpath>
+            <Include-Resource>static/=target/classes/static</Include-Resource>
+          </instructions>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
