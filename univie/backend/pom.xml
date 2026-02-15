@@ -206,6 +206,7 @@
         <configuration>
           <instructions>
             <Management-Plugin>univie</Management-Plugin>
+            <Management-Plugin-I18n>univie-sidebar, univie-footer, univie-landing-page, univie-empty-state</Management-Plugin-I18n>
             <Http-Alias>/management-ui/static/plugins/univie</Http-Alias>
             <Http-Classpath>/static/plugins/univie</Http-Classpath>
             <Include-Resource>static/=target/classes/static</Include-Resource>
