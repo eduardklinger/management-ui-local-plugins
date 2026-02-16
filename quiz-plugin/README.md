@@ -9,6 +9,16 @@ This plugin uses a **hybrid approach**:
 - **GraphQL (Opencast)**: Event data, user authentication
 - **Convex (External DBaaS)**: Quiz data, submissions, real-time results
 
+### React Query Integration (Important)
+
+The Management UI host provides the `QueryClientProvider`. The plugin must use
+`@workspace/query` hooks (not `@tanstack/react-query` directly) so it shares the
+host client instance. Otherwise you'll see:
+
+```
+No QueryClient set, use QueryClientProvider to set one
+```
+
 ## Structure
 
 ```
