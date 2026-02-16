@@ -113,7 +113,7 @@
             <Management-Plugin>quiz</Management-Plugin>
             <Http-Alias>/management-ui/static/plugins/quiz</Http-Alias>
             <Http-Classpath>/static/plugins/quiz</Http-Classpath>
-            <Include-Resource>static/=target/classes/static</Include-Resource>
+            <Include-Resource>{maven-resources},static/=target/classes/static</Include-Resource>
             <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
           </instructions>
         </configuration>

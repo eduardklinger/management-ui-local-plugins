@@ -66,14 +66,14 @@ public final class QuizService {
       cardinality = ReferenceCardinality.OPTIONAL,
       policy = ReferencePolicy.DYNAMIC
   )
-  private DBSessionFactory dbSessionFactory;
+  private volatile DBSessionFactory dbSessionFactory;
 
   @Reference(
       target = "(osgi.unit.name=org.opencastproject.quiz)",
       cardinality = ReferenceCardinality.OPTIONAL,
       policy = ReferencePolicy.DYNAMIC
   )
-  private EntityManagerFactory entityManagerFactory;
+  private volatile EntityManagerFactory entityManagerFactory;
 
   private QuizDataStore dataStore;
 
