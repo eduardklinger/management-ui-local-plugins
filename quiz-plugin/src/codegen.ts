@@ -24,7 +24,7 @@ const config: CodegenConfig = {
         {
           add: {
             content:
-              'import type { UseQueryResult, UseSuspenseQueryResult } from "@tanstack/react-query";',
+              'import type { UseQueryResult, UseSuspenseQueryResult } from "@workspace/query";',
           },
         },
         {

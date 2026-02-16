@@ -6,7 +6,7 @@
 import {
   useMutation,
   type UseMutationOptions,
-} from "@tanstack/react-query";
+} from "@workspace/query";
 import { fetchData } from "./fetcher";
 
 // --- CreateQuiz ---
