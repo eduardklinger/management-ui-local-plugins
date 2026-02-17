@@ -5,7 +5,7 @@ Backend implementation of the Quiz Plugin for Opencast Management UI.
 ## Features
 
 - **GraphQL Extensions**: Extends Opencast's GraphQL schema with quiz-related fields and mutations
-- **Hybrid Database Approach**: Uses Convex (external DBaaS) for quiz data, Opencast GraphQL for core data
+- **Flexible Storage**: Opencast DB (JPA), Convex (external DBaaS), or Mock (in-memory)
 - **Fully Encapsulated**: Both frontend and backend can be deployed as a single JAR
 
 ## Building
@@ -49,6 +49,20 @@ The Quiz Plugin is deployed as a **single JAR** that includes both frontend and 
 3. **The core loads the plugin automatically:** The JAR has `Management-Plugin: quiz`, so Opencast's plugin tracker adds it to `plugins.json`. The Management UI core fetches that list and loads `quiz.mjs` (and `quiz.css` if present) from the same origin. No Marketplace install step needed when deployed as JAR.
 
 ## Configuration
+
+### OSGi Configuration (Recommended)
+
+Create `etc/org.opencastproject.quiz.plugin.service.QuizService.cfg` in your Opencast distribution:
+
+```properties
+store=opencast
+convexUrl=
+```
+
+`store` can be:
+- `opencast` (default) – Uses the Opencast DB (JPA)
+- `convex` – Uses Convex (requires `convexUrl` or `CONVEX_URL`)
+- `mock` – In-memory store (development only)
 
 ### Environment Variables
 
@@ -125,8 +139,17 @@ mutation SubmitQuiz($eventId: String!, $answers: QuizAnswersInput!) {
 
 - **Backend**: Java/OSGi bundle with GraphQL extensions
 - **Frontend**: React/TypeScript ES module (bundled in JAR)
-- **Database**: Convex (external) or Mock (in-memory for development)
+- **Database**: Opencast DB (JPA), Convex (external), or Mock (in-memory)
 - **Deployment**: Single JAR containing both frontend and backend
+
+## Database Schema (MariaDB/MySQL)
+
+Automatic DDL is disabled in production (`ddl-generation=none`). If you need to create the tables manually, use:
+
+- `sql/quiz-schema-mariadb.sql`
+
+Run it once in your database (e.g. via phpMyAdmin). This creates:
+`oc_quiz`, `oc_quiz_question`, `oc_quiz_submission`.
 
 ## When separating the plugin from the monorepo
 
