@@ -144,7 +144,19 @@ mutation SubmitQuiz($eventId: String!, $answers: QuizAnswersInput!) {
 
 ## Database Schema (MariaDB/MySQL)
 
-Automatic DDL is disabled in production (`ddl-generation=none`). If you need to create the tables manually, use:
+Automatic DDL is disabled in production (`ddl-generation=none`). By default, the backend auto-creates the schema on startup for MariaDB/MySQL using a lightweight initializer. If you want to disable it, set:
+
+```
+autoCreate=false
+```
+
+in:
+
+```
+etc/org.opencastproject.quiz.plugin.schema.cfg
+```
+
+If you need to create the tables manually, use:
 
 - `sql/quiz-schema-mariadb.sql`
 - `sql/quiz-schema-drop.sql` (optional cleanup/reset)
