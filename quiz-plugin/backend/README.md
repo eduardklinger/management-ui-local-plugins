@@ -147,6 +147,7 @@ mutation SubmitQuiz($eventId: String!, $answers: QuizAnswersInput!) {
 Automatic DDL is disabled in production (`ddl-generation=none`). If you need to create the tables manually, use:
 
 - `sql/quiz-schema-mariadb.sql`
+- `sql/quiz-schema-drop.sql` (optional cleanup/reset)
 
 Run it once in your database (e.g. via phpMyAdmin). This creates:
 `oc_quiz`, `oc_quiz_question`, `oc_quiz_submission`.
