@@ -1,5 +1,5 @@
 {
-  "extends": "@workspace/typescript-config/react-application.json",
+  "extends": "../../packages/typescript-config/react-application.json",
   "compilerOptions": {
     "baseUrl": ".",
     "composite": false,
