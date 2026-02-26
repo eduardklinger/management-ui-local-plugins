@@ -1,0 +1,18 @@
+{
+  "id": "series-create-acl-editor-plugin",
+  "name": "Series Create ACL Editor",
+  "description": "Adds an optional ACL editor UI to the create-series dialog.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Management UI Team",
+    "url": "https://github.com/opencast/management-ui"
+  },
+  "category": "feature",
+  "icon": "Shield",
+  "tags": ["series", "acl", "permissions"],
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0",
+    "@workspace/query": ">=1.0.0"
+  }
+}
