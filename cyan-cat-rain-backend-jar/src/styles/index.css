@@ -1,0 +1,91 @@
+/**
+ * Plugin Styles
+ *
+ * Tailwind v4: use @import "tailwindcss" to pull in base, components, and utilities.
+ * All Tailwind classes used in your plugin components will be generated here.
+ *
+ * This CSS is bundled with your plugin and loaded automatically when
+ * the plugin is imported (via `import "./styles/index.css"` in index.ts).
+ */
+
+/* Avoid Tailwind preflight overriding core app fonts */
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+@source "../**/*.{ts,tsx,js,jsx}";
+
+.cat-demo-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.cat-rain-stage {
+  position: relative;
+  height: 24rem;
+  border: 1px solid rgb(148 163 184 / 0.35);
+  border-radius: 0.9rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 20%, rgb(255 255 255 / 0.6), transparent 42%),
+    radial-gradient(circle at 84% 14%, rgb(255 255 255 / 0.48), transparent 34%),
+    linear-gradient(165deg, rgb(241 245 249), rgb(226 232 240));
+}
+
+.cat-rain-stage--cyan {
+  background:
+    radial-gradient(circle at 10% 18%, rgb(255 255 255 / 0.65), transparent 44%),
+    radial-gradient(circle at 85% 20%, rgb(125 211 252 / 0.45), transparent 38%),
+    linear-gradient(165deg, rgb(207 250 254), rgb(186 230 253) 38%, rgb(236 254 255));
+}
+
+.cat-stage-overlay {
+  position: absolute;
+  inset: auto 1rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cat-status-pill {
+  border-radius: 9999px;
+  border: 1px solid rgb(14 116 144 / 0.25);
+  background: rgb(239 246 255 / 0.85);
+  color: rgb(14 116 144);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  backdrop-filter: blur(2px);
+}
+
+.cat-drop {
+  position: absolute;
+  top: -3.5rem;
+  transform: translateX(0);
+  animation-name: cat-drop-fall;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+  pointer-events: none;
+  user-select: none;
+  filter: saturate(1.15);
+  text-shadow: 0 6px 20px rgb(15 23 42 / 0.15);
+}
+
+.cat-rain-stage--cyan .cat-drop {
+  filter: hue-rotate(120deg) saturate(1.45);
+}
+
+@keyframes cat-drop-fall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate3d(var(--cat-drift), 33rem, 0) rotate(var(--cat-spin));
+    opacity: 0;
+  }
+}

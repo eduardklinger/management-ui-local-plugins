@@ -10,10 +10,10 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>my-org-plugin-backend</artifactId>
+  <artifactId>cyan-cat-rain-plugin-backend</artifactId>
   <packaging>bundle</packaging>
 
-  <name>My Org Plugin :: Backend</name>
+  <name>Cyan Cat Rain Plugin :: Backend</name>
 
   <properties>
     <opencast.basedir>${project.basedir}/../..</opencast.basedir>
@@ -21,7 +21,7 @@
     <checkstyle.suppressions.file>${project.basedir}/../../../docs/checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.file>
   </properties>
 
-  <description>Minimal backend JAR for the my-org-plugin frontend. Copies dist/ from .local-plugins/my-org-plugin and exposes it via Management-Plugin so the UI loads it from plugins.json.</description>
+  <description>Minimal backend JAR for the cyan-cat-rain frontend. Copies dist/ from .local-plugins/my-org-plugin and exposes it via Management-Plugin so the UI loads it from plugins.json.</description>
 
   <build>
     <plugins>
@@ -87,13 +87,13 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${basedir}/target/classes/static/plugins/my-org</outputDirectory>
+              <outputDirectory>${basedir}/target/classes/static/plugins/cyan-cat-rain</outputDirectory>
               <resources>
                 <resource>
                   <directory>${basedir}/../dist</directory>
                   <includes>
-                    <include>my-org.mjs</include>
-                    <include>my-org.css</include>
+                    <include>cyan-cat-rain.mjs</include>
+                    <include>cyan-cat-rain.css</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
@@ -107,7 +107,7 @@
               <goal>copy-resources</goal>
             </goals>
             <configuration>
-              <outputDirectory>${basedir}/target/classes/static/plugins/my-org/assets</outputDirectory>
+              <outputDirectory>${basedir}/target/classes/static/plugins/cyan-cat-rain/assets</outputDirectory>
               <resources>
                 <resource>
                   <directory>${basedir}/../dist/assets</directory>
@@ -128,10 +128,10 @@
         <artifactId>maven-bundle-plugin</artifactId>
         <configuration>
           <instructions>
-            <Management-Plugin>my-org</Management-Plugin>
+            <Management-Plugin>cyan-cat-rain</Management-Plugin>
             <!-- Subpath only: avoid conflict with management-ui-core which registers /management-ui -->
-            <Http-Alias>/management-ui/static/plugins/my-org</Http-Alias>
-            <Http-Classpath>/static/plugins/my-org</Http-Classpath>
+            <Http-Alias>/management-ui/static/plugins/cyan-cat-rain</Http-Alias>
+            <Http-Classpath>/static/plugins/cyan-cat-rain</Http-Classpath>
             <!-- No Java source; include static resources from target/classes -->
             <Include-Resource>static/=target/classes/static</Include-Resource>
           </instructions>

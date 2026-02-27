@@ -1,36 +1,37 @@
 {
-  "name": "@community/my-org-plugin",
+  "name": "@community/cyan-cat-rain-plugin",
   "version": "1.0.0",
   "type": "module",
-  "description": "A community plugin for Management UI",
+  "description": "Demo community plugin: click a button and make cyan cats rain.",
   "author": {
-    "name": "Your Name",
-    "email": "your.email@example.com",
-    "url": "https://example.com"
+    "name": "Management UI Demo Team",
+    "email": "demo@example.com",
+    "url": "https://github.com/opencast/management-ui"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/your-plugin"
+    "url": "https://github.com/your-org/cyan-cat-rain-plugin"
   },
   "pluginMetadata": {
-    "id": "my-org",
-    "name": "My Community Plugin",
-    "description": "Description of what this plugin does",
-    "category": "feature",
-    "icon": "Puzzle",
+    "id": "cyan-cat-rain",
+    "name": "Cyan Cat Rain",
+    "description": "Silly demo plugin used to show the full community plugin workflow.",
+    "category": "experimental",
+    "icon": "CloudRain",
     "tags": [
-      "example",
-      "community"
+      "demo",
+      "cats",
+      "workflow"
     ],
     "workspaceDependencies": {
       "@workspace/plugin-system": ">=1.0.0"
     }
   },
-  "main": "./dist/my-org.mjs",
+  "main": "./dist/cyan-cat-rain.mjs",
   "types": "./src/index.ts",
   "exports": {
-    ".": "./dist/my-org.mjs"
+    ".": "./dist/cyan-cat-rain.mjs"
   },
   "files": [
     "dist"
