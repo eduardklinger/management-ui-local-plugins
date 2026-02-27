@@ -7,13 +7,13 @@ export const config = {
   app: {
     // Active theme: "univie" or "tuwien" (must match a theme in plugins/themes/ or .local-plugins/<name>/themes/)
     theme: "univie",
+    // Path without base - resolveAssetUrl() in the UI will prepend base once (avoids double /management-ui/)
     orgLogoUrl: (() => {
-      if (typeof window === "undefined") return "/management-ui/static/plugins/univie/assets/logo.png";
-      const base = window.location.pathname.startsWith("/management-ui") ? "/management-ui" : "";
+      if (typeof window === "undefined") return "static/plugins/univie/assets/logo.png";
       const isDev =
         window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-      const pluginBase = isDev ? `${base}/local-plugins/univie` : `${base}/static/plugins/univie`;
-      return `${pluginBase}/assets/logo.png`;
+      const pluginPath = isDev ? "local-plugins/univie" : "static/plugins/univie";
+      return `${pluginPath}/assets/logo.png`;
     })(),
     faviconUrl: "/management-ui/assets/favicon/favicon.svg",
     pluginNamespace: [
@@ -22,6 +22,12 @@ export const config = {
       "series",
       "upload",
       "admin",
+      "nyan-cat-rain",
+      "cyan-cat-rain",
+      "poll-plugin",
+      "series-create-acl-editor-plugin",
+      "video-playlists-plugin",
+      "video-playlists-acl-editor-plugin",
       {
         univie: {
           types: ["app", "footer", "landing-page", "sidebar", "navigation"],
@@ -42,6 +48,13 @@ export const config = {
         // },
       },
     ],
+  },
+  plugins: {
+    "poll-plugin-app": {
+      protection: {
+        public: true,
+      },
+    },
   },
   // Univie URLs (used when theme is univie)
   studioUrl: "https://admin.oc.univie.ac.at/studio",
