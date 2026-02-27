@@ -1,0 +1,54 @@
+/**
+ * Compact theme – dense, information-dense UI.
+ * Small radius, tight spacing, minimal shadows, neutral palette.
+ * Set config.app.theme to "compact" to use.
+ */
+:root {
+  /* Tighter spacing */
+  --spacing-tight: 0.25rem;
+  --spacing-normal: 0.5rem;
+  --spacing-relaxed: 0.75rem;
+  --spacing-card: 0.5rem;
+  --spacing-sidebar: 0.5rem;
+
+  /* Sharp, compact radius */
+  --radius: 0.25rem;
+
+  /* Minimal shadows */
+  --shadow-sm: 0 1px 1px 0 rgb(0 0 0 / 0.04);
+  --shadow-md: 0 2px 4px -1px rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 4px 6px -2px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-sidebar: none;
+
+  /* Slightly faster transitions */
+  --duration-transition: 100ms;
+
+  /* Neutral, high-contrast palette */
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.2 0 0);
+  --primary: oklch(0.35 0 0);
+  --primary-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.96 0 0);
+  --muted-foreground: oklch(0.5 0 0);
+  --border: oklch(0.9 0 0);
+  --sidebar: oklch(0.98 0 0);
+  --sidebar-foreground: oklch(0.2 0 0);
+  --sidebar-primary: oklch(0.35 0 0);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.92 0 0);
+  --color-footer: oklch(0.96 0 0);
+}
+
+.dark {
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --shadow-sidebar: none;
+  --background: oklch(0.14 0 0);
+  --foreground: oklch(0.95 0 0);
+  --primary: oklch(0.9 0 0);
+  --primary-foreground: oklch(0.2 0 0);
+  --sidebar: oklch(0.18 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.28 0 0);
+  --color-footer: oklch(0.18 0 0);
+}

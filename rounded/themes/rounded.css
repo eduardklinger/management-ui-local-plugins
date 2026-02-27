@@ -1,0 +1,54 @@
+/**
+ * Rounded theme – soft, friendly, pill-like UI.
+ * Large radius, soft shadows, relaxed spacing, blue accent.
+ * Set config.app.theme to "rounded" to use.
+ */
+:root {
+  /* Relaxed spacing */
+  --spacing-tight: 0.75rem;
+  --spacing-normal: 1rem;
+  --spacing-relaxed: 1.5rem;
+  --spacing-card: 1.25rem;
+  --spacing-sidebar: 1rem;
+
+  /* Very rounded corners */
+  --radius: 1rem;
+
+  /* Softer, larger shadows */
+  --shadow-sm: 0 2px 4px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  --shadow-md: 0 8px 16px -4px rgb(0 0 0 / 0.08), 0 4px 8px -4px rgb(0 0 0 / 0.04);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.08), 0 8px 10px -6px rgb(0 0 0 / 0.04);
+  --shadow-card: 0 4px 12px -2px rgb(0 0 0 / 0.08), 0 2px 6px -2px rgb(0 0 0 / 0.04);
+  --shadow-sidebar: 0 2px 8px -2px rgb(0 0 0 / 0.06);
+
+  /* Slightly slower, smoother transitions */
+  --duration-transition: 200ms;
+
+  /* Friendly blue primary, warm off-white background */
+  --background: oklch(0.985 0.004 260);
+  --foreground: oklch(0.22 0.02 260);
+  --primary: oklch(0.55 0.2 260);
+  --primary-foreground: oklch(0.99 0 0);
+  --muted: oklch(0.96 0.01 260);
+  --muted-foreground: oklch(0.5 0.02 260);
+  --border: oklch(0.92 0.01 260);
+  --sidebar: oklch(0.98 0.008 260);
+  --sidebar-foreground: oklch(0.22 0.02 260);
+  --sidebar-primary: oklch(0.55 0.2 260);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-border: oklch(0.92 0.01 260);
+  --color-footer: oklch(0.96 0.01 260);
+}
+
+.dark {
+  --shadow-card: 0 4px 12px -2px rgb(0 0 0 / 0.25), 0 2px 6px -2px rgb(0 0 0 / 0.2);
+  --shadow-sidebar: 0 2px 8px -2px rgb(0 0 0 / 0.2);
+  --background: oklch(0.18 0.02 260);
+  --foreground: oklch(0.95 0.01 260);
+  --primary: oklch(0.65 0.2 260);
+  --primary-foreground: oklch(0.99 0 0);
+  --sidebar: oklch(0.22 0.02 260);
+  --sidebar-foreground: oklch(0.95 0.01 260);
+  --sidebar-border: oklch(0.32 0.02 260);
+  --color-footer: oklch(0.2 0.02 260);
+}

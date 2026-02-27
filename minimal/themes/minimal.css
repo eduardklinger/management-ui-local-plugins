@@ -1,0 +1,56 @@
+/**
+ * Minimal theme – sharp, editorial, no fluff.
+ * Zero radius, no card shadows, strong borders, optional serif.
+ * Set config.app.theme to "minimal" to use.
+ */
+:root {
+  /* Generous spacing for breathing room */
+  --spacing-tight: 0.5rem;
+  --spacing-normal: 1rem;
+  --spacing-relaxed: 1.5rem;
+  --spacing-card: 1.5rem;
+  --spacing-sidebar: 1rem;
+
+  /* Completely sharp */
+  --radius: 0;
+
+  /* No elevation – flat */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-card: none;
+  --shadow-sidebar: none;
+
+  --duration-transition: 120ms;
+
+  /* Editorial: serif for body (optional – uncomment to try) */
+  /* --font-sans: "Georgia", "Times New Roman", serif; */
+  /* --font-heading: "Georgia", "Times New Roman", serif; */
+
+  /* High contrast, clean */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.12 0 0);
+  --primary: oklch(0.2 0 0);
+  --primary-foreground: oklch(0.99 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --border: oklch(0.85 0 0);
+  --sidebar: oklch(0.99 0 0);
+  --sidebar-foreground: oklch(0.12 0 0);
+  --sidebar-primary: oklch(0.2 0 0);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-border: oklch(0.88 0 0);
+  --color-footer: oklch(0.97 0 0);
+}
+
+.dark {
+  --background: oklch(0.12 0 0);
+  --foreground: oklch(0.96 0 0);
+  --primary: oklch(0.95 0 0);
+  --primary-foreground: oklch(0.12 0 0);
+  --border: oklch(0.28 0 0);
+  --sidebar: oklch(0.14 0 0);
+  --sidebar-foreground: oklch(0.96 0 0);
+  --sidebar-border: oklch(0.25 0 0);
+  --color-footer: oklch(0.14 0 0);
+}
