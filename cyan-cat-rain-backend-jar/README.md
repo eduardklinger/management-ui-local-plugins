@@ -29,14 +29,14 @@ pnpm install
 Terminal 1 (watch build):
 
 ```bash
-cd .local-plugins/my-org-plugin
+cd .local-plugins/cyan-cat-rain-backend-jar
 pnpm dev
 ```
 
 Terminal 2 (serve built plugin):
 
 ```bash
-cd .local-plugins/my-org-plugin
+cd .local-plugins/cyan-cat-rain-backend-jar
 npx http-server dist --cors -p 5173
 ```
 
@@ -65,7 +65,7 @@ Load in Marketplace Developer Mode:
 
 ## Build and Quality Gates
 
-From `.local-plugins/my-org-plugin`:
+From `.local-plugins/cyan-cat-rain-backend-jar`:
 
 ```bash
 pnpm typecheck
@@ -78,14 +78,14 @@ pnpm build
 Build plugin frontend:
 
 ```bash
-cd .local-plugins/my-org-plugin
+cd .local-plugins/cyan-cat-rain-backend-jar
 pnpm build
 ```
 
 Build backend bundle:
 
 ```bash
-cd .local-plugins/my-org-plugin/backend
+cd .local-plugins/cyan-cat-rain-backend-jar/backend
 mvn clean install
 ```
 
@@ -122,7 +122,7 @@ git push origin v1.0.0
 
 ### 4. Generate registry-ready metadata
 
-From `.local-plugins/my-org-plugin` inside this monorepo:
+From `.local-plugins/cyan-cat-rain-backend-jar` inside this monorepo:
 
 ```bash
 pnpm ts-node ../../packages/plugin-system/scripts/export-registry.ts ./plugin-metadata.json

@@ -21,7 +21,7 @@
     <checkstyle.suppressions.file>${project.basedir}/../../../docs/checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.file>
   </properties>
 
-  <description>Minimal backend JAR for the cyan-cat-rain frontend. Copies dist/ from .local-plugins/my-org-plugin and exposes it via Management-Plugin so the UI loads it from plugins.json.</description>
+  <description>Minimal backend JAR for the cyan-cat-rain frontend. Copies dist/ from .local-plugins/cyan-cat-rain-backend-jar and exposes it via Management-Plugin so the UI loads it from plugins.json.</description>
 
   <build>
     <plugins>
