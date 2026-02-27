@@ -1,0 +1,302 @@
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+
+.poll-shell {
+  --poll-font: Inter, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  --poll-bg: #f6f8fd;
+  --poll-text: #16233a;
+  --poll-muted: #5f6f8a;
+  --poll-line: #dce4f3;
+  --poll-surface: #ffffff;
+  --poll-surface-soft: #f8fbff;
+  --poll-accent-a: #4f46e5;
+  --poll-accent-b: #0284c7;
+  --poll-alert-border: #f4ccb2;
+  --poll-alert-bg: #fff2e9;
+  --poll-alert-text: #8a4f2b;
+  --poll-alert-info-border: #c6d8fb;
+  --poll-alert-info-bg: #eef5ff;
+  --poll-alert-info-text: #2a487b;
+  --poll-spinner: #4d6188;
+  color: var(--poll-text);
+  font-family: var(--poll-font);
+  min-height: calc(100vh - 8rem);
+  min-height: calc(100dvh - 8rem);
+  background:
+    radial-gradient(1300px 900px at -10% -10%, #dfe6ff 0%, transparent 60%),
+    radial-gradient(1000px 700px at 100% 0%, #d9f2ff 0%, transparent 60%),
+    var(--poll-bg);
+  padding: 8px 0 0;
+}
+
+.dark .poll-shell,
+.poll-shell.poll-theme-dark {
+  --poll-bg: #0b1220;
+  --poll-text: #e7eefc;
+  --poll-muted: #98a9c9;
+  --poll-line: #2a3956;
+  --poll-surface: #111a2c;
+  --poll-surface-soft: #0f1829;
+  --poll-accent-a: #7c5cff;
+  --poll-accent-b: #00aee4;
+  --poll-alert-border: #7d4f2f;
+  --poll-alert-bg: #2c201b;
+  --poll-alert-text: #ffd4bc;
+  --poll-alert-info-border: #3f5c87;
+  --poll-alert-info-bg: #14223d;
+  --poll-alert-info-text: #c8d9fa;
+  --poll-spinner: #a9bfe9;
+  background:
+    radial-gradient(1200px 900px at -10% -10%, #26335f 0%, transparent 60%),
+    radial-gradient(1100px 700px at 100% 0%, #15445a 0%, transparent 62%),
+    var(--poll-bg);
+}
+
+.poll-wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-inline: clamp(12px, 3.2vw, 24px);
+  padding-top: clamp(14px, 3vh, 28px);
+  padding-bottom: clamp(28px, 7vh, 72px);
+}
+
+.poll-pill {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 4px 10px;
+  border: 1px solid var(--poll-line);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--poll-muted);
+}
+
+.poll-heading {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.poll-subtitle {
+  margin: 10px 0 22px;
+  font-size: 17px;
+  color: var(--poll-muted);
+}
+
+.poll-section {
+  border-top: 1px solid var(--poll-line);
+  padding-top: 16px;
+  margin-top: 18px;
+}
+
+.poll-section-label {
+  margin: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--poll-muted);
+}
+
+.poll-section-title {
+  margin: 8px 0 0;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+}
+
+.poll-question {
+  margin: 8px 0 0;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.2;
+}
+
+.poll-muted {
+  margin: 8px 0 0;
+  color: var(--poll-muted);
+  font-size: 14px;
+}
+
+.poll-empty {
+  margin: 14px 0 0;
+  color: var(--poll-muted);
+}
+
+.poll-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  margin-top: 14px;
+  align-items: center;
+}
+
+.poll-row-answer {
+  margin-top: 18px;
+}
+
+.poll-input {
+  border-color: var(--poll-line);
+  background: var(--poll-surface);
+}
+
+.poll-list {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.poll-list-item {
+  background: var(--poll-surface-soft);
+  border: 1px solid var(--poll-line);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.poll-list-item-head {
+  margin-bottom: 8px;
+}
+
+.poll-list-question {
+  margin: 0;
+  font-weight: 600;
+}
+
+.poll-list-meta {
+  margin: 4px 0 0;
+  color: var(--poll-muted);
+  font-size: 12px;
+}
+
+.poll-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.poll-answers {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.poll-option {
+  background: var(--poll-surface-soft);
+  border: 1px solid var(--poll-line);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.poll-option.is-selected {
+  border-color: color-mix(in srgb, var(--poll-accent-a) 60%, var(--poll-line));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--poll-accent-a) 40%, transparent) inset;
+}
+
+.poll-option-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.poll-option-label {
+  font-weight: 500;
+}
+
+.poll-option-votes {
+  font-size: 14px;
+}
+
+.poll-bar {
+  margin: 8px 0 12px;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--poll-line) 85%, transparent);
+}
+
+.poll-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--poll-accent-a), var(--poll-accent-b));
+  transition: width 0.2s ease;
+}
+
+.poll-qr {
+  margin-top: 12px;
+  display: grid;
+  place-items: center;
+  min-height: 250px;
+  padding: 14px;
+  border: 1px dashed var(--poll-line);
+  border-radius: 12px;
+  background: var(--poll-surface-soft);
+}
+
+.poll-qr-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.poll-code {
+  display: block;
+  margin-top: 12px;
+  padding: 11px 12px;
+  border: 1px solid var(--poll-line);
+  border-radius: 10px;
+  background: var(--poll-surface-soft);
+  color: var(--poll-text);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.poll-alert {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--poll-alert-border);
+  border-radius: 10px;
+  background: var(--poll-alert-bg);
+  color: var(--poll-alert-text);
+}
+
+.poll-alert-info {
+  border-color: var(--poll-alert-info-border);
+  background: var(--poll-alert-info-bg);
+  color: var(--poll-alert-info-text);
+}
+
+.poll-loading {
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poll-loading-icon {
+  width: 32px;
+  height: 32px;
+  color: var(--poll-spinner);
+  animation: poll-spin 1s linear infinite;
+}
+
+@keyframes poll-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .poll-shell {
+    padding-top: 2px;
+  }
+
+  .poll-wrap {
+    padding-inline: 14px;
+    padding-top: 10px;
+    padding-bottom: 32px;
+  }
+
+  .poll-row {
+    grid-template-columns: 1fr;
+  }
+}
