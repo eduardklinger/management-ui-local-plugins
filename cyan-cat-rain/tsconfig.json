@@ -1,0 +1,11 @@
+{
+  "extends": "@workspace/typescript-config/react-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": false,
+    "skipLibCheck": true,
+    "paths": {}
+  },
+  "include": [".", "../vite-env.d.ts"],
+  "exclude": ["node_modules", "dist", ".turbo"]
+}

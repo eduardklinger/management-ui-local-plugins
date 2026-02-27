@@ -1,0 +1,73 @@
+{
+  "name": "@community/cyan-cat-rain",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "clean": "rm -rf .turbo && rm -rf dist && rm -rf node_modules",
+    "lint": "eslint . --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0",
+    "check-types": "tsc --noEmit -p tsconfig.json",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@workspace/plugin-system": "workspace:*",
+    "@workspace/ui": "workspace:*",
+    "lucide-react": "^0.417.0",
+    "react": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0 || ^19.0.0",
+    "@types/react-dom": "^18.0.0 || ^19.0.0",
+    "@vitejs/plugin-react-swc": "^3.9.0",
+    "@workspace/tailwind-config": "workspace:*",
+    "eslint": "^9.20.0",
+    "rollup": "^4.44.2",
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.3.3",
+    "vite": "^6.0.0",
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*"
+  },
+  "description": "Community plugin: plugin-cyan-cat-rain",
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "url": "https://example.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/your-plugin"
+  },
+  "pluginMetadata": {
+    "id": "cyan-cat-rain",
+    "name": "plugin-cyan-cat-rain",
+    "description": "Community plugin: plugin-cyan-cat-rain",
+    "category": "feature",
+    "icon": "Puzzle",
+    "tags": [
+      "example",
+      "community"
+    ],
+    "workspaceDependencies": {
+      "@workspace/plugin-system": ">=1.0.0"
+    }
+  },
+  "main": "./dist/cyan-cat-rain.mjs",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./dist/cyan-cat-rain.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "@workspace/plugin-system": "*",
+    "@workspace/ui": "*",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  }
+}

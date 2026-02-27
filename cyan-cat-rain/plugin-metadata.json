@@ -1,0 +1,24 @@
+{
+  "id": "cyan-cat-rain",
+  "name": "plugin-cyan-cat-rain",
+  "description": "Community plugin: plugin-cyan-cat-rain",
+  "version": "1.0.0",
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "url": "https://example.com"
+  },
+  "category": "feature",
+  "icon": "Puzzle",
+  "tags": [
+    "example",
+    "community"
+  ],
+  "repositoryUrl": "https://github.com/your-org/your-plugin",
+  "homepageUrl": "https://github.com/your-org/your-plugin",
+  "license": "MIT",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0"
+  }
+}
