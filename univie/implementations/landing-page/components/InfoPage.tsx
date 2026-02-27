@@ -4,9 +4,7 @@ import { createOrganizationNamespace, usePluginTranslation } from "@workspace/i1
 import { useGetCurrentUser } from "@workspace/query";
 import { useAuthActions } from "@workspace/router";
 import { Button } from "@workspace/ui/components";
-
-// Import the SVG as a URL
-import univieLogoUrl from "./assets/univie_logo.svg?url";
+import { resolveFirstAssetUrl } from "@workspace/ui/lib";
 
 /**
  * University of Vienna Landing Page Implementation
@@ -25,13 +23,13 @@ const InfoPage: FC = () => {
       <div className="relative h-full px-6 isolate sm:py-40 lg:px-8">
         {/* University of Vienna logo background */}
         <div
-          className="absolute inset-0 object-cover w-full z-100 bg-no-repeat h-full bg-[right_-12rem_bottom_-12rem] opacity-50 pointer-events-none"
+          className="absolute inset-0 z-0 object-cover w-full bg-no-repeat h-full bg-[right_-12rem_bottom_-12rem] opacity-50 pointer-events-none"
           style={{
-            backgroundImage: `url(${univieLogoUrl})`,
+            backgroundImage: `url(${resolveFirstAssetUrl([], "assets/univie/univie_logo.svg")})`,
           }}
         />
 
-        <div className="absolute inset-0 bg-white [mask-image:radial-gradient(150%_250%_at_top_left,white,transparent)] pointer-events-none" />
+        <div className="absolute inset-0 z-[1] bg-white [mask-image:radial-gradient(150%_250%_at_top_left,white,transparent)] pointer-events-none" />
 
         <div
           className="absolute inset-x-0 flex justify-center overflow-hidden top-10 -z-10 transform-gpu blur-3xl"
