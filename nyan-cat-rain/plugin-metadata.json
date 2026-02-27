@@ -1,0 +1,21 @@
+{
+  "id": "nyan-cat-rain",
+  "name": "Nyan Cat Rain",
+  "description": "Silly demo plugin: one click and nyan cats rain across the screen.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Management UI Demo Team",
+    "email": "demo@example.com",
+    "url": "https://github.com/opencast/management-ui"
+  },
+  "category": "experimental",
+  "icon": "Rocket",
+  "tags": ["demo", "cats", "workflow"],
+  "repositoryUrl": "https://github.com/your-org/nyan-cat-rain-plugin",
+  "homepageUrl": "https://github.com/your-org/nyan-cat-rain-plugin",
+  "license": "MIT",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0"
+  }
+}

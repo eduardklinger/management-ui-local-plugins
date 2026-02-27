@@ -1,0 +1,109 @@
+.nyan-screen {
+  position: relative;
+  width: 100%;
+  min-height: calc(100dvh - 8rem);
+  overflow: hidden;
+  background: radial-gradient(circle at 20% 20%, #2a0f70 0%, #120132 55%, #070012 100%);
+  z-index: 1;
+}
+
+.nyan-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: 0.22;
+}
+
+.nyan-bg-glow {
+  position: absolute;
+  width: 34rem;
+  height: 34rem;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+}
+
+.nyan-bg-glow--one {
+  background: #00f6ff;
+  top: -8rem;
+  left: -8rem;
+}
+
+.nyan-bg-glow--two {
+  background: #ff3ee4;
+  bottom: -10rem;
+  right: -10rem;
+}
+
+.nyan-start-wrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+
+.nyan-start-btn {
+  font-size: 1.05rem;
+  padding: 1.5rem 2rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #00e1ff, #ff4ce2);
+  color: #041626;
+  border: none;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+}
+
+.nyan-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.nyan-cat-row {
+  position: absolute;
+  left: -24rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  animation: nyan-fly linear forwards;
+}
+
+.nyan-trail {
+  width: 18rem;
+  height: 0.9rem;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    #ff3b3b 0 16%,
+    #ff9e2c 16% 33%,
+    #ffe900 33% 50%,
+    #3cfb52 50% 66%,
+    #25a8ff 66% 83%,
+    #9a52ff 83% 100%
+  );
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+}
+
+.nyan-cat {
+  line-height: 1;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.45));
+}
+
+@keyframes nyan-fly {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(calc(100vw + 28rem));
+    opacity: 1;
+  }
+}
