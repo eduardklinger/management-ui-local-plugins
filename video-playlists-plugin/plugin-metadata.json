@@ -1,0 +1,22 @@
+{
+  "id": "video-playlists-plugin",
+  "name": "Video Playlists",
+  "description": "Create and manage video playlists from the Management UI sidebar.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Management UI Team",
+    "url": "https://github.com/opencast/management-ui"
+  },
+  "category": "feature",
+  "icon": "List",
+  "tags": [
+    "playlists",
+    "videos",
+    "management"
+  ],
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0",
+    "@workspace/query": ">=1.0.0"
+  }
+}
