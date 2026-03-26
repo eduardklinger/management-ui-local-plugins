@@ -98,6 +98,25 @@
             </configuration>
           </execution>
           <execution>
+            <id>copy-frontend-styles</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static/plugins/univie</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../dist</directory>
+                  <includes>
+                    <include>*.css</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
             <id>copy-frontend-assets</id>
             <phase>generate-resources</phase>
             <goals>
@@ -114,7 +133,6 @@
                   <filtering>false</filtering>
                 </resource>
               </resources>
-              <skipIfMissing>true</skipIfMissing>
             </configuration>
           </execution>
           <execution>
@@ -153,7 +171,6 @@
                   <filtering>false</filtering>
                 </resource>
               </resources>
-              <skipIfMissing>true</skipIfMissing>
             </configuration>
           </execution>
           <execution>
@@ -195,7 +212,6 @@
                   <targetPath>univie-empty-state</targetPath>
                 </resource>
               </resources>
-              <skipIfMissing>true</skipIfMissing>
             </configuration>
           </execution>
         </executions>
@@ -206,6 +222,7 @@
         <configuration>
           <instructions>
             <Management-Plugin>univie</Management-Plugin>
+            <Management-Plugin-Css>univie-plugin.css</Management-Plugin-Css>
             <Management-Plugin-I18n>univie-sidebar, univie-footer, univie-landing-page, univie-empty-state</Management-Plugin-I18n>
             <Http-Alias>/management-ui/static/plugins/univie</Http-Alias>
             <Http-Classpath>/static/plugins/univie</Http-Classpath>

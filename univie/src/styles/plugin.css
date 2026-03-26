@@ -1,0 +1,11 @@
+/**
+ * Plugin-owned styles for Univie components.
+ *
+ * We intentionally avoid preflight so the core shell keeps owning global resets.
+ * This file only emits the utilities/components used inside the Univie plugin.
+ */
+
+@import "tailwindcss/theme.css";
+@import "tailwindcss/utilities.css";
+
+@layer components, utilities;
