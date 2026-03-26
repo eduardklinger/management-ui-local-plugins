@@ -9,6 +9,7 @@
     "description": "Univie plugin: config, sidebar, footer, landing page, empty state, event calendar.",
     "category": "feature",
     "icon": "School",
+    "replacesJarScopes": ["management_ui_plugin_univie"],
     "workspaceDependencies": {
       "@workspace/plugin-system": ">=1.0.0"
     }
