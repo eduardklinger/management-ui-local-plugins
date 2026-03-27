@@ -3,9 +3,17 @@
  *
  * We intentionally avoid preflight so the core shell keeps owning global resets.
  * This file only emits the utilities/components used inside the Univie plugin.
+ * Host overrides must stay scoped so they do not depend on stylesheet order.
  */
 
-@layer theme, base, components, utilities;
+@layer theme, base, components, utilities, plugin-overrides;
 
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
+
+@layer plugin-overrides {
+  .univie-sidebar-nav [data-sidebar="menu-button"][data-active="true"] {
+    background-color: var(--sidebar-primary);
+    color: var(--sidebar-accent-foreground);
+  }
+}
