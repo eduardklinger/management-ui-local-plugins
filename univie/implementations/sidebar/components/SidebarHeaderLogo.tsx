@@ -1,7 +1,6 @@
 import React from "react";
 
 import { useAppConfig } from "@workspace/query";
-import { Home } from "@workspace/ui/components/icons";
 import { resolveFirstAssetUrl } from "@workspace/ui/lib";
 import { cn } from "@workspace/ui/lib/utils";
 
@@ -21,6 +20,10 @@ export const SidebarHeaderLogo = ({ collapsed }: SidebarHeaderLogoProps) => {
 
   const preferredSrc = resolveFirstAssetUrl(
     [config.app.orgLogoUrl, config.app.logoUrl],
+    "assets/favicon/favicon.svg",
+  );
+  const collapsedSrc = resolveFirstAssetUrl(
+    [config.app.faviconUrl],
     "assets/favicon/favicon.svg",
   );
 
@@ -55,9 +58,12 @@ export const SidebarHeaderLogo = ({ collapsed }: SidebarHeaderLogoProps) => {
               />
             )}
           </span>
-          <Home
+          <img
+            src={collapsedSrc}
+            alt=""
+            aria-hidden="true"
             className={cn(
-              "transition-all ease-in-out duration-600",
+              "mx-auto h-6 w-6 object-contain transition-all ease-in-out duration-600",
               collapsed ? "opacity-100 w-full" : "opacity-0 w-[0%] h-0",
             )}
           />

@@ -7,6 +7,8 @@
  * Activation is still config-driven: only the types enabled under
  * app.pluginNamespace["univie"].types are registered.
  */
+import "../styles/plugin.css";
+
 import { createPlugin } from "@workspace/plugin-system";
 import type { Plugin } from "@workspace/plugin-system";
 import sidebarPlugin from "./sidebar";

@@ -4,7 +4,8 @@ import { createOrganizationNamespace, usePluginTranslation } from "@workspace/i1
 import { useGetCurrentUser } from "@workspace/query";
 import { useAuthActions } from "@workspace/router";
 import { Button } from "@workspace/ui/components";
-import { resolveFirstAssetUrl } from "@workspace/ui/lib";
+
+import { resolvePluginAssetUrl } from "../../../src/pluginAssetUrl";
 
 /**
  * University of Vienna Landing Page Implementation
@@ -25,7 +26,7 @@ const InfoPage: FC = () => {
         <div
           className="absolute inset-0 z-0 object-cover w-full bg-no-repeat h-full bg-[right_-12rem_bottom_-12rem] opacity-50 pointer-events-none"
           style={{
-            backgroundImage: `url(${resolveFirstAssetUrl([], "assets/univie/univie_logo.svg")})`,
+            backgroundImage: `url(${resolvePluginAssetUrl("assets/univie_logo.svg")})`,
           }}
         />
 
