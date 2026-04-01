@@ -6,8 +6,7 @@ import { createPlugin } from "@workspace/plugin-system";
 
 import {
   univieSidebarImplementation,
-  studioUnivieNavImplementation,
-  captureUnivieNavImplementation,
+  univieNavItemsImplementation,
 } from "../../implementations/sidebar";
 
 const plugin = createPlugin({
@@ -16,8 +15,7 @@ const plugin = createPlugin({
   version: "1.0.0",
   initialize(manager) {
     manager.register(univieSidebarImplementation);
-    manager.register(studioUnivieNavImplementation);
-    manager.register(captureUnivieNavImplementation);
+    manager.register(univieNavItemsImplementation);
   },
   activate() {},
   deactivate() {},

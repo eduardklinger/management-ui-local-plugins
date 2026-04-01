@@ -9,8 +9,7 @@
 export { univieFooterImplementation } from "./footer";
 export {
   univieSidebarImplementation,
-  studioUnivieNavImplementation,
-  captureUnivieNavImplementation,
+  univieNavItemsImplementation,
 } from "./sidebar";
 export { univieLandingPageImplementation } from "./landing-page";
 export * from "./empty-state";

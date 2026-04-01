@@ -65,29 +65,42 @@ export const univieSidebarImplementation = createPlugin({
   deactivate() {},
 });
 
-export const studioUnivieNavImplementation = createPlugin({
+const getConfigUrl = (
+  configObjects: Array<Record<string, unknown>>,
+  appKey: "studioUrl" | "captureUrl",
+  rootKey: "studioUrl" | "captureUrl",
+) => {
+  for (let i = configObjects.length - 1; i >= 0; i -= 1) {
+    const configObject = configObjects[i];
+    if (!configObject) continue;
+
+    const appConfig = configObject["app"] as Record<string, unknown> | undefined;
+    const appUrl = appConfig?.[appKey];
+    if (typeof appUrl === "string" && appUrl.trim().length > 0) {
+      return appUrl;
+    }
+
+    const rootUrl = configObject[rootKey];
+    if (typeof rootUrl === "string" && rootUrl.trim().length > 0) {
+      return rootUrl;
+    }
+  }
+
+  return undefined;
+};
+
+export const univieNavItemsImplementation = createPlugin({
   namespace: "univie",
   type: "navigation",
   version: "1.0.0",
 
   initialize(manager: PluginManager) {
-    // Get all config objects from the plugin manager and merge them
+    // Read URLs from the latest matching config object to avoid undefined
+    // values introduced by shallow-merge overrides.
     const configObjects = manager.getObjects<Record<string, unknown>>("app:config");
+    const studioUrl = getConfigUrl(configObjects, "studioUrl", "studioUrl") || "/studio";
+    const captureUrl = getConfigUrl(configObjects, "captureUrl", "captureUrl") || "/capture";
 
-    // Merge all configs (similar to how PluginInitializer does it)
-    const mergedConfig = configObjects.reduce(
-      (acc: Record<string, unknown>, obj: Record<string, unknown>) => {
-        return { ...acc, ...obj };
-      },
-      {},
-    );
-
-    // Get Studio URL from merged config
-    const appConfig = mergedConfig?.["app"] as { studioUrl?: string } | undefined;
-    const studioUrl =
-      appConfig?.studioUrl || (mergedConfig?.["studioUrl"] as string | undefined) || "/studio";
-
-    // Register a plain object (not a React component)
     manager.registerObject("sidebar:nav-items", "studio", {
       title: "Studio",
       path: studioUrl,
@@ -98,41 +111,7 @@ export const studioUnivieNavImplementation = createPlugin({
       featureFlags: [],
       category: "studio",
     });
-  },
 
-  activate() {
-    logger.debug("[univie:navigation] Plugin activated");
-  },
-
-  deactivate() {
-    logger.debug("[univie:navigation] Plugin deactivated");
-  },
-});
-
-export const captureUnivieNavImplementation = createPlugin({
-  namespace: "univie",
-  type: "navigation",
-  version: "1.0.0",
-
-  initialize(manager: PluginManager) {
-    // Get all config objects from the plugin manager and merge them
-    const configObjects = manager.getObjects<Record<string, unknown>>("app:config");
-
-    // Merge all configs (similar to how PluginInitializer does it)
-    const mergedConfig = configObjects.reduce(
-      (acc: Record<string, unknown>, obj: Record<string, unknown>) => {
-        return { ...acc, ...obj };
-      },
-      {},
-    );
-
-    // Get Capture URL from merged config
-    const appConfig = mergedConfig?.["app"] as { captureUrl?: string } | undefined;
-    const captureUrl =
-      appConfig?.captureUrl || (mergedConfig?.["captureUrl"] as string | undefined) || "/capture";
-
-    // Register a plain object (not a React component)
-    // Title will be translated in CustomNavMain component
     manager.registerObject("sidebar:nav-items", "capture", {
       title: "univie-sidebar:capture", // i18n key
       path: captureUrl,
