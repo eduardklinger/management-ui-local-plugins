@@ -1,0 +1,25 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "nyan-cat-rain",
+  "name": "Nyan Cat Rain",
+  "version": "1.0.0",
+  "description": "Silly demo plugin used to show the full community plugin workflow.",
+  "author": {
+    "name": "Management UI Demo Team",
+    "email": "demo@example.com",
+    "url": "https://github.com/opencast/management-ui"
+  },
+  "namespace": "nyan-cat-rain",
+  "type": "app",
+  "category": "experimental",
+  "visibility": "public",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/nyan-cat-rain.mjs",
+  "icon": "Rocket",
+  "tags": ["demo", "cats", "workflow"],
+  "license": "MIT",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "series-create-acl-editor-plugin",
+  "name": "Series Create ACL Editor",
+  "version": "1.0.0",
+  "description": "Adds an optional ACL editor UI to the create-series dialog.",
+  "author": {
+    "name": "Management UI Team",
+    "email": "team@example.com"
+  },
+  "namespace": "series-create-acl-editor-plugin",
+  "type": "app",
+  "category": "feature",
+  "visibility": "public",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/series-create-acl-editor-plugin.mjs",
+  "icon": "Shield",
+  "tags": ["series", "acl", "permissions"],
+  "license": "MIT",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0",
+    "@workspace/query": ">=1.0.0"
+  }
+}

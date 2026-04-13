@@ -1,0 +1,23 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "cyan-cat-rain",
+  "name": "Cyan Cat Rain",
+  "version": "1.0.0",
+  "description": "Community plugin: plugin-cyan-cat-rain",
+  "author": {
+    "name": "Management UI Team"
+  },
+  "namespace": "cyan-cat-rain",
+  "type": "app",
+  "category": "feature",
+  "visibility": "public",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/cyan-cat-rain.mjs",
+  "css": "dist/cyan-cat-rain.css",
+  "icon": "Puzzle",
+  "tags": ["example", "community"],
+  "license": "MIT",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0"
+  }
+}

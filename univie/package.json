@@ -14,9 +14,13 @@
       "@workspace/plugin-system": ">=1.0.0"
     }
   },
-  "main": "./dist/univie.mjs",
+  "main": "./src/index.ts",
   "exports": {
-    ".": "./dist/univie.mjs"
+    ".": "./src/index.ts",
+    "./app": "./dist/plugin-univie-app.mjs",
+    "./footer": "./dist/plugin-univie-footer.mjs",
+    "./landing-page": "./dist/plugin-univie-landing-page.mjs",
+    "./sidebar": "./dist/plugin-univie-sidebar.mjs"
   },
   "files": [
     "dist"

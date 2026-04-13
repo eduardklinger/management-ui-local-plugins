@@ -2,6 +2,8 @@
  * Univie sidebar + navigation bundle (plugin-univie-sidebar.mjs).
  * Loaded when config has univie: { types: [..., "sidebar", "navigation"] }.
  */
+import "../styles/plugin.css";
+
 import { createPlugin } from "@workspace/plugin-system";
 
 import {

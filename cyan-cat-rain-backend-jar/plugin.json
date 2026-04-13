@@ -1,0 +1,26 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "cyan-cat-rain-backend-jar",
+  "name": "Cyan Cat Rain",
+  "version": "1.0.0",
+  "description": "Silly demo plugin used to show the full community plugin workflow.",
+  "author": {
+    "name": "Management UI Demo Team",
+    "email": "demo@example.com",
+    "url": "https://github.com/opencast/management-ui"
+  },
+  "namespace": "cyan-cat-rain-backend-jar",
+  "type": "app",
+  "category": "experimental",
+  "visibility": "public",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/cyan-cat-rain-backend-jar.mjs",
+  "css": "dist/cyan-cat-rain-backend-jar.css",
+  "icon": "CloudRain",
+  "tags": ["demo", "cats", "workflow"],
+  "license": "MIT",
+  "repositoryUrl": "https://github.com/your-org/cyan-cat-rain-plugin",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0"
+  }
+}

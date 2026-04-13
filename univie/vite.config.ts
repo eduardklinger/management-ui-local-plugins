@@ -1,7 +1,7 @@
 /**
- * Vite config for University of Vienna plugin (single entry JAR build).
- * Builds one .mjs (univie.mjs) that conditionally registers sub-plugins
- * based on app.pluginNamespace["univie"].types.
+ * Vite config for University of Vienna plugin.
+ * Builds one real bundle per plugin type so dev and production expose the
+ * same deployable units.
  */
 import { createBaseConfig } from "@workspace/vite-config";
 import { defineConfig } from "vite";
@@ -15,6 +15,12 @@ const tailwindPackageRoot = resolve(
   monorepoRoot,
   "node_modules/.pnpm/node_modules/tailwindcss",
 );
+const entryPoints = {
+  "plugin-univie-app": resolve(pluginRoot, "src/entries/app.ts"),
+  "plugin-univie-footer": resolve(pluginRoot, "src/entries/footer.ts"),
+  "plugin-univie-landing-page": resolve(pluginRoot, "src/entries/landing-page.ts"),
+  "plugin-univie-sidebar": resolve(pluginRoot, "src/entries/sidebar.ts"),
+};
 
 export default defineConfig(({ mode }) => {
   const baseConfig = createBaseConfig({
@@ -34,9 +40,9 @@ export default defineConfig(({ mode }) => {
     build: {
       ...baseConfig.build,
       lib: {
-        entry: resolve(pluginRoot, "src/entries/jar-loader.ts"),
+        entry: entryPoints,
         name: pluginName.replace(/-/g, "_"),
-        fileName: (format) => `${pluginName}.${format === "es" ? "mjs" : "js"}`,
+        fileName: (_format, entryName) => `${entryName}.mjs`,
         formats: ["es"],
       },
       outDir: "dist",

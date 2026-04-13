@@ -19,7 +19,7 @@
     <checkstyle.suppressions.file>${project.basedir}/../../../docs/checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.file>
   </properties>
 
-  <description>JAR for the config plugin (.local-plugins/config). Copies dist/ and exposes via Management-Plugin so the UI loads it from plugins.json.</description>
+  <description>JAR for the config plugin (.local-plugins/config). Copies frontend bundles from dist/ and exposes them via Management-Plugin so the UI loads them from plugins.json.</description>
 
   <build>
     <plugins>
@@ -88,31 +88,11 @@
                 <resource>
                   <directory>${basedir}/../dist</directory>
                   <includes>
-                    <include>plugin-config.mjs</include>
+                    <include>*.mjs</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
               </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <!-- Rename plugin-config.mjs to config.mjs so jar-plugin-loader finds it (path last segment = config) -->
-      <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>rename-plugin-files</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <target>
-                <copy file="${basedir}/target/classes/static/plugins/config/plugin-config.mjs"
-                      tofile="${basedir}/target/classes/static/plugins/config/config.mjs" failonerror="true"/>
-                <delete file="${basedir}/target/classes/static/plugins/config/plugin-config.mjs" failonerror="false"/>
-              </target>
             </configuration>
           </execution>
         </executions>

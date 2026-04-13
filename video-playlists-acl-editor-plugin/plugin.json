@@ -1,0 +1,25 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "video-playlists-acl-editor-plugin",
+  "name": "Video Playlists ACL Editor",
+  "version": "1.0.0",
+  "description": "Adds an optional ACL editor UI to create/edit playlist dialogs.",
+  "author": {
+    "name": "Management UI Team",
+    "email": "team@example.com"
+  },
+  "namespace": "video-playlists-acl-editor-plugin",
+  "type": "app",
+  "category": "feature",
+  "visibility": "public",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/video-playlists-acl-editor-plugin.mjs",
+  "icon": "Shield",
+  "tags": ["playlists", "acl", "permissions"],
+  "license": "MIT",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0",
+    "@workspace/query": ">=1.0.0"
+  }
+}

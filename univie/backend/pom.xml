@@ -20,7 +20,7 @@
     <checkstyle.suppressions.file>${project.basedir}/../../../docs/checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.file>
   </properties>
 
-  <description>JAR for the Univie plugin (.local-plugins/univie). Copies dist/ (univie.mjs) and themes/. Core loads univie.mjs which conditionally registers sub-plugins.</description>
+  <description>JAR for the Univie plugin (.local-plugins/univie). Copies split frontend bundles from dist/ and shared theme/assets so the backend can expose one plugins.json entry per .mjs module.</description>
 
   <build>
     <plugins>

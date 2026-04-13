@@ -8,8 +8,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { resolve } from "path";
 
-import pkg from "./package.json";
-const pluginName = pkg.pluginMetadata?.id || "quiz-plugin";
+import pluginManifest from "./plugin.json";
+const pluginName = pluginManifest.id;
 
 export default defineConfig({
   plugins: [react()],

@@ -1,0 +1,46 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "plugin-univie",
+  "name": "University of Vienna",
+  "version": "1.0.0",
+  "description": "Univie plugin: config, sidebar, footer, landing page, empty state, event calendar.",
+  "author": {
+    "name": "Management UI Team",
+    "organization": "University of Vienna"
+  },
+  "namespace": "univie",
+  "category": "feature",
+  "visibility": "private",
+  "apiVersion": ">=1.0.0",
+  "modules": [
+    {
+      "id": "app",
+      "type": "app",
+      "entry": "dist/plugin-univie-app.mjs",
+      "css": "dist/univie-plugin.css"
+    },
+    {
+      "id": "sidebar",
+      "type": "sidebar",
+      "entry": "dist/plugin-univie-sidebar.mjs",
+      "css": "dist/univie-plugin.css"
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "entry": "dist/plugin-univie-footer.mjs",
+      "css": "dist/univie-plugin.css"
+    },
+    {
+      "id": "landing-page",
+      "type": "landing-page",
+      "entry": "dist/plugin-univie-landing-page.mjs",
+      "css": "dist/univie-plugin.css"
+    }
+  ],
+  "icon": "School",
+  "replacesJarScopes": ["management_ui_plugin_univie"],
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0"
+  }
+}

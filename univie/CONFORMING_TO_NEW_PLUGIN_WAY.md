@@ -6,8 +6,8 @@ This plugin has been updated to match the pattern used by `plugins/community-plu
 
 - **`plugin-metadata.json`** – Added for Marketplace/registry (id, name, category, workspaceDependencies).
 - **Single default export** – New entry `src/index.ts` creates one `createPlugin()` that registers all Univie implementations (config, footer, sidebar, landing page, empty state, event calendar app). The core’s remote loader expects `import(url).then(m => m.default)`.
-- **`package.json`** – Added `pluginMetadata`, `main`, `exports`, and `files`; build changed from `turbo run build --filter=@univie/*` to `vite build` producing `dist/plugin-univie.mjs`.
-- **`vite.config.ts`** – Added at plugin root: self-contained lib config (single entry `src/index.ts`, externals for react and `@workspace/*`).
+- **`package.json`** – Added `pluginMetadata`, `exports`, and `files`; build changed from `turbo run build --filter=@univie/*` to `vite build` producing split `dist/plugin-univie-*.mjs` bundles for real type-level loading.
+- **`vite.config.ts`** – Added at plugin root: self-contained lib config with one entry per deployable plugin type and shared externals for react and `@workspace/*`.
 
 ## Build
 

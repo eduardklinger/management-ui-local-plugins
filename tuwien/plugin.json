@@ -1,0 +1,20 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "plugin-tuwien",
+  "name": "TU Wien",
+  "version": "1.0.0",
+  "description": "TU Wien plugin: config, sidebar, footer, header, landing page, episodes/series actions, custom app.",
+  "author": {
+    "name": "Management UI Team"
+  },
+  "namespace": "tuwien",
+  "type": "app",
+  "category": "feature",
+  "visibility": "private",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/plugin-tuwien.mjs",
+  "icon": "Building2",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0"
+  }
+}

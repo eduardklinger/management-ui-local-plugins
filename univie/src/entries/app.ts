@@ -1,6 +1,8 @@
 /**
  * Univie app bundle (plugin-univie-app.mjs): event-calendar + empty-state.
  */
+import "../styles/plugin.css";
+
 import { createPlugin } from "@workspace/plugin-system";
 
 import { univieEventCalendarPlugin } from "../../apps/event-calendar-plugin";

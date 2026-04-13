@@ -1,0 +1,27 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "poll-plugin",
+  "name": "Poll Plugin",
+  "version": "1.0.0",
+  "description": "Public audience poll wall with open question, free-text answers, and live voting.",
+  "author": {
+    "name": "Management UI Demo Team",
+    "email": "demo@example.com",
+    "url": "https://github.com/opencast/management-ui"
+  },
+  "namespace": "poll-plugin",
+  "type": "app",
+  "category": "feature",
+  "visibility": "public",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/poll-plugin.mjs",
+  "css": "dist/poll-plugin.css",
+  "icon": "BarChart3",
+  "tags": ["poll", "qr", "voting", "demo"],
+  "license": "MIT",
+  "replacesJarScopes": ["poll"],
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0"
+  }
+}

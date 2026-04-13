@@ -19,7 +19,7 @@
     <checkstyle.suppressions.file>${project.basedir}/../../../docs/checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.file>
   </properties>
 
-  <description>JAR for the TU Wien plugin (.local-plugins/tuwien). Copies dist/ and themes/, renames plugin-tuwien.mjs to tuwien.mjs so jar-plugin-loader finds it.</description>
+  <description>JAR for the TU Wien plugin (.local-plugins/tuwien). Copies frontend bundles from dist/ and themes/ so the backend can expose them directly via plugins.json.</description>
 
   <build>
     <plugins>
@@ -88,7 +88,7 @@
                 <resource>
                   <directory>${basedir}/../dist</directory>
                   <includes>
-                    <include>plugin-tuwien.mjs</include>
+                    <include>*.mjs</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
@@ -159,26 +159,6 @@
                   <filtering>false</filtering>
                 </resource>
               </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <!-- Rename plugin-tuwien.mjs to tuwien.mjs so jar-plugin-loader finds it -->
-      <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>rename-plugin-files</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <target>
-                <copy file="${basedir}/target/classes/static/plugins/tuwien/plugin-tuwien.mjs"
-                      tofile="${basedir}/target/classes/static/plugins/tuwien/tuwien.mjs" failonerror="true"/>
-                <delete file="${basedir}/target/classes/static/plugins/tuwien/plugin-tuwien.mjs" failonerror="false"/>
-              </target>
             </configuration>
           </execution>
         </executions>

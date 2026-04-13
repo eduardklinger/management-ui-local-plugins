@@ -1,0 +1,23 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "my-plugin",
+  "name": "My Community Plugin",
+  "version": "1.0.0",
+  "description": "Description of what this plugin does",
+  "author": {
+    "name": "Management UI Team"
+  },
+  "namespace": "my-org-plugin",
+  "type": "app",
+  "category": "feature",
+  "visibility": "public",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/my-plugin.mjs",
+  "css": "dist/my-plugin.css",
+  "icon": "Puzzle",
+  "tags": ["example", "community"],
+  "license": "MIT",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0"
+  }
+}

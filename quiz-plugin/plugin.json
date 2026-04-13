@@ -1,0 +1,25 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "quiz",
+  "name": "Quiz Plugin",
+  "version": "1.0.0",
+  "description": "Interactive quiz system for events with real-time results",
+  "author": {
+    "name": "Management UI Team",
+    "email": "team@example.com"
+  },
+  "namespace": "quiz-plugin",
+  "type": "app",
+  "category": "feature",
+  "visibility": "public",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/quiz.mjs",
+  "icon": "HelpCircle",
+  "tags": ["quiz", "education", "interactive"],
+  "license": "MIT",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/query": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0"
+  }
+}

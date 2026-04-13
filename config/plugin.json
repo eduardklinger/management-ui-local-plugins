@@ -1,0 +1,20 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "plugin-config",
+  "name": "Root Config",
+  "version": "1.0.0",
+  "description": "Single root app config for .local-plugins (theme, pluginNamespace, URLs).",
+  "author": {
+    "name": "Management UI Team"
+  },
+  "namespace": "config",
+  "type": "config",
+  "category": "config",
+  "visibility": "private",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/plugin-config.mjs",
+  "icon": "Settings",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0"
+  }
+}

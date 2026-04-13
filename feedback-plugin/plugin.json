@@ -1,0 +1,25 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "feedback",
+  "name": "Feedback",
+  "version": "1.0.0",
+  "description": "Collect and manage user feedback",
+  "author": {
+    "name": "Community",
+    "email": "community@example.com"
+  },
+  "namespace": "feedback-plugin",
+  "type": "app",
+  "category": "feature",
+  "visibility": "public",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/feedback.mjs",
+  "icon": "MessageSquare",
+  "tags": ["feedback", "user-input", "communication"],
+  "license": "MIT",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0",
+    "@workspace/query": ">=1.0.0"
+  }
+}

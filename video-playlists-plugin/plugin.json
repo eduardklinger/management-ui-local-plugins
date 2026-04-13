@@ -1,0 +1,25 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "video-playlists-plugin",
+  "name": "Video Playlists",
+  "version": "1.0.0",
+  "description": "Create and manage video playlists from the Management UI sidebar.",
+  "author": {
+    "name": "Management UI Team",
+    "email": "team@example.com"
+  },
+  "namespace": "video-playlists-plugin",
+  "type": "app",
+  "category": "feature",
+  "visibility": "public",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/video-playlists-plugin.mjs",
+  "icon": "List",
+  "tags": ["playlists", "videos", "management"],
+  "license": "MIT",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0",
+    "@workspace/query": ">=1.0.0"
+  }
+}

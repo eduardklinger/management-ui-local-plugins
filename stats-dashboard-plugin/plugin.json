@@ -1,0 +1,27 @@
+{
+  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
+  "id": "stats-dashboard",
+  "name": "Statistics Dashboard",
+  "version": "1.0.0",
+  "description": "Beautiful animated dashboard displaying Opencast event statistics",
+  "author": {
+    "name": "Community",
+    "email": "community@opencast.org",
+    "url": "https://opencast.org"
+  },
+  "namespace": "stats-dashboard-plugin",
+  "type": "app",
+  "category": "feature",
+  "visibility": "public",
+  "apiVersion": ">=1.0.0",
+  "entry": "dist/stats-dashboard.mjs",
+  "icon": "BarChart3",
+  "tags": ["dashboard", "statistics", "analytics", "events"],
+  "license": "MIT",
+  "repositoryUrl": "https://github.com/opencast/stats-dashboard-plugin",
+  "workspaceDependencies": {
+    "@workspace/plugin-system": ">=1.0.0",
+    "@workspace/ui": ">=1.0.0",
+    "@workspace/query": ">=1.0.0"
+  }
+}
