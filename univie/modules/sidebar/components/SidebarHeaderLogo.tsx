@@ -36,7 +36,7 @@ export const SidebarHeaderLogo = ({ collapsed }: SidebarHeaderLogoProps) => {
               !collapsed ? "opacity-100 w-full" : "opacity-0 w-[0%] h-0",
             )}
           >
-            {config.app.appTitle.length > 0 ? (
+            {config.app.appTitle && config.app.appTitle.length > 0 ? (
               config.app.appTitle
             ) : (
               <img
