@@ -48,10 +48,15 @@ const InfoPage: FC = () => {
             <section className="mb-8">
               <h3 className="text-xl font-semibold">{t(`${namespace}:features_header`)}</h3>
               <ul className="list-disc list-inside mt-4">
-                <Trans
-                  i18nKey={`${namespace}:features`}
-                  components={{ strong: <strong />, li: <li /> }}
-                />
+                {(() => {
+                  const items = t(`${namespace}:features`, { returnObjects: true });
+                  if (!Array.isArray(items)) return null;
+                  return (items as Array<{ term: string; desc: string }>).map((feature, index) => (
+                    <li key={index}>
+                      <strong>{feature.term}</strong> {feature.desc}
+                    </li>
+                  ));
+                })()}
               </ul>
             </section>
             <section className="mb-8">

@@ -12,5 +12,11 @@
   "ups": "Aufnehmen - Streamen - Interagieren",
   "ups_intro": "LectureTube ist die Videoplattform für Angehörige der TU Wien, die ihnen hilft, Videoinhalte zu erstellen, zu teilen und zu verwalten.",
   "features_header": "Funktionen",
-  "features": "<li><strong>Vorlesungsaufzeichnung:</strong> Nehmen Sie Vorlesungen in dafür vorgesehenen Hörsälen auf.</li><li><strong>Live-Streaming:</strong> Streamen Sie Ihre Vorlesungen in Echtzeit.</li><li><strong>Inhaltserstellung:</strong> Laden Sie vorhandene Videos hoch oder erstellen Sie neue Inhalte.</li><li><strong>Nahtlose Integration:</strong> Integrieren Sie Videos nahtlos in TUWEL-Kurse oder Webseiten.</li><li><strong>Einfache Verwaltung:</strong> Bearbeiten und verwalten Sie Ihre Inhalte mit einer benutzerfreundlichen Oberfläche.</li>"
+  "features": [
+    { "term": "Vorlesungsaufzeichnung:", "desc": "Nehmen Sie Vorlesungen in dafür vorgesehenen Hörsälen auf." },
+    { "term": "Live-Streaming:", "desc": "Streamen Sie Ihre Vorlesungen in Echtzeit." },
+    { "term": "Inhaltserstellung:", "desc": "Laden Sie vorhandene Videos hoch oder erstellen Sie neue Inhalte." },
+    { "term": "Nahtlose Integration:", "desc": "Integrieren Sie Videos nahtlos in TUWEL-Kurse oder Webseiten." },
+    { "term": "Einfache Verwaltung:", "desc": "Bearbeiten und verwalten Sie Ihre Inhalte mit einer benutzerfreundlichen Oberfläche." }
+  ]
 }
