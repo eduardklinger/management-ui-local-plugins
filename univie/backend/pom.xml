@@ -98,6 +98,25 @@
             </configuration>
           </execution>
           <execution>
+            <id>copy-plugin-json</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static/plugins/univie</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/..</directory>
+                  <includes>
+                    <include>plugin.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
             <id>copy-frontend-styles</id>
             <phase>generate-resources</phase>
             <goals>
@@ -183,28 +202,28 @@
               <outputDirectory>${basedir}/target/classes/static/plugins/univie/locales</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${basedir}/../implementations/sidebar/locales</directory>
+                  <directory>${basedir}/../modules/sidebar/locales</directory>
                   <includes>
                     <include>**/*.json</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
                 <resource>
-                  <directory>${basedir}/../implementations/footer/locales</directory>
+                  <directory>${basedir}/../modules/footer/locales</directory>
                   <includes>
                     <include>**/*.json</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
                 <resource>
-                  <directory>${basedir}/../implementations/landing-page/locales</directory>
+                  <directory>${basedir}/../modules/landing-page/locales</directory>
                   <includes>
                     <include>**/*.json</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
                 <resource>
-                  <directory>${basedir}/../implementations/empty-state/locales</directory>
+                  <directory>${basedir}/../modules/empty-state/locales</directory>
                   <includes>
                     <include>*.json</include>
                   </includes>

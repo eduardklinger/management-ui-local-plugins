@@ -15,7 +15,7 @@
   "homepageUrl": "https://github.com/your-org/cyan-cat-rain-plugin",
   "license": "MIT",
   "workspaceDependencies": {
-    "@workspace/plugin-system": ">=1.0.0",
-    "@workspace/ui": ">=1.0.0"
+    "@oc-mui/plugin-system": ">=1.0.0",
+    "@oc-mui/ui": ">=1.0.0"
   }
 }

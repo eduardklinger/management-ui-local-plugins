@@ -1,20 +1,79 @@
 {
-  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
   "id": "plugin-tuwien",
   "name": "TU Wien",
   "version": "1.0.0",
-  "description": "TU Wien plugin: config, sidebar, footer, header, landing page, episodes/series actions, custom app.",
+  "description": "TU Wien plugin: sidebar, footer, header, landing page, table sidebar, upload ACL editor, episodes/series actions, navigation, and custom app.",
   "author": {
     "name": "Management UI Team"
   },
   "namespace": "tuwien",
-  "type": "app",
   "category": "feature",
   "visibility": "private",
   "apiVersion": ">=1.0.0",
-  "entry": "dist/plugin-tuwien.mjs",
+  "modules": [
+    {
+      "id": "app",
+      "type": "app",
+      "entry": "dist/plugin-tuwien-app.mjs"
+    },
+    {
+      "id": "episodes-actions",
+      "type": "episodes-actions",
+      "entry": "dist/plugin-tuwien-episodes-actions.mjs",
+      "locales": "locales",
+      "i18nNamespaces": ["tuwien-episodes"]
+    },
+    {
+      "id": "footer",
+      "type": "footer",
+      "entry": "dist/plugin-tuwien-footer.mjs",
+      "locales": "locales",
+      "i18nNamespaces": ["tuwien-footer"]
+    },
+    {
+      "id": "header",
+      "type": "header",
+      "entry": "dist/plugin-tuwien-header.mjs"
+    },
+    {
+      "id": "landing-page",
+      "type": "landing-page",
+      "entry": "dist/plugin-tuwien-landing-page.mjs",
+      "locales": "locales",
+      "i18nNamespaces": ["tuwien-landing-page"]
+    },
+    {
+      "id": "navigation",
+      "type": "navigation",
+      "entry": "dist/plugin-tuwien-navigation.mjs"
+    },
+    {
+      "id": "series-actions",
+      "type": "series-actions",
+      "entry": "dist/plugin-tuwien-series-actions.mjs",
+      "locales": "locales",
+      "i18nNamespaces": ["tuwien-series"]
+    },
+    {
+      "id": "sidebar",
+      "type": "sidebar",
+      "entry": "dist/plugin-tuwien-sidebar.mjs"
+    },
+    {
+      "id": "table-sidebar",
+      "type": "table-sidebar",
+      "entry": "dist/plugin-tuwien-table-sidebar.mjs",
+      "locales": "locales",
+      "i18nNamespaces": ["tuwien-acl"]
+    },
+    {
+      "id": "upload-acl-editor",
+      "type": "upload-acl-editor",
+      "entry": "dist/plugin-tuwien-upload-acl-editor.mjs"
+    }
+  ],
   "icon": "Building2",
   "workspaceDependencies": {
-    "@workspace/plugin-system": ">=1.0.0"
+    "@oc-mui/plugin-system": ">=1.0.0"
   }
 }

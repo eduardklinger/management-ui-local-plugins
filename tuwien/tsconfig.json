@@ -1,29 +1,22 @@
 {
-  "extends": "../../packages/typescript-config/react-application.json",
   "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
     "baseUrl": ".",
     "composite": false,
-    "types": [
-      "node",
-      "react",
-      "vite/client"
-    ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src",
-    "vite-env.d.ts",
-    "vite.config.ts",
-    "tailwind.config.js",
-    "postcss.config.mjs"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    ".turbo"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "vite-env.d.ts", "vite.config.ts"],
+  "exclude": ["node_modules", "dist", ".turbo"]
 }

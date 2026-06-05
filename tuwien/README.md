@@ -1,118 +1,84 @@
-# TU Wien Plugin - Custom Application
+# TU Wien Plugin
 
-This plugin demonstrates how universities can create custom applications that can run both within the core shell and as standalone applications.
+Organization plugin for the [Management UI](https://github.com/academic-moodle-cooperation/management-tool), providing TU Wien branding, navigation, actions, and custom UI components.
 
-## Features
+## Modules
 
-- **Dual Execution Mode**: Runs in core shell or standalone
-- **Dedicated Port**: Standalone execution on port 3005
-- **Full Provider Context**: Access to router, auth, plugins, query client
-- **University-Specific Features**: Custom workflows and branding
+| Module | Type | Description |
+|--------|------|-------------|
+| `app` | App | TU Wien custom route registered in the Management UI |
+| `episodes-actions` | Episodes actions | Tobira action for episode tables |
+| `footer` | Footer | TU Wien-branded footer |
+| `header` | Header | TU Wien header replacement |
+| `landing-page` | Landing page | TU Wien-branded landing/info page |
+| `navigation` | Navigation | TU Wien studio navigation link |
+| `series-actions` | Series actions | Tobira action for series tables |
+| `sidebar` | Sidebar | TU Wien sidebar content, header, and footer |
+| `table-sidebar` | Table sidebar | ACL editor tabs for episode and series tables |
+| `upload-acl-editor` | Upload ACL editor | TU Wien ACL editor integration for uploads |
+
+## Project Structure
+
+```
+tuwien/
+├── apps/
+│   ├── TuWienCustomApp.tsx          # Custom TU Wien app route
+│   ├── index.ts                     # App exports
+│   └── tuwien-custom-app-plugin.ts  # App plugin entry
+├── modules/
+│   ├── episodes/                    # Episode actions + i18n
+│   ├── footer/                      # Footer component + i18n
+│   ├── header/                      # Header component
+│   ├── landing-page/                # Landing page + i18n
+│   ├── navigation/                  # Navigation entry wrapper
+│   ├── series/                      # Series actions + i18n
+│   ├── sidebar/                     # Sidebar components
+│   ├── table-sidebar/               # ACL sidebar tabs + i18n
+│   └── upload-acl-editor/           # Upload ACL editor
+├── src/index.ts                     # Single-entry registration of all modules
+├── themes/tuwien.css                # TU Wien theme CSS
+├── backend/pom.xml                  # Maven JAR build
+├── plugin.json                      # Canonical plugin manifest
+└── plugin-metadata.json             # Marketplace metadata
+```
+
+Each module is built as its own `.mjs` bundle so `.local-plugins` dev loading and backend JAR loading expose the same deployable units.
+
+## Internationalization
+
+The plugin ships with German (`de`) and English (`en`) translations.
+
+Namespaces: `tuwien-episodes`, `tuwien-series`, `tuwien-footer`, `tuwien-landing-page`, `tuwien-acl`.
 
 ## Development
 
-### Standalone Development
+### Prerequisites
+
+- Node.js 20+
+- pnpm 10+
+
+### Build
+
+From the monorepo root (so `@oc-mui/*` dependencies resolve):
 
 ```bash
-# Navigate to the TU Wien plugin directory
-cd plugins/tuwien
-
-# Install dependencies (if not already installed)
 pnpm install
-
-# Start standalone development server
-pnpm dev
-```
-
-The app will be available at: http://127.0.0.1:3005
-
-### Core Shell Integration
-
-The app is automatically registered through the plugin system and appears in the core shell navigation at `/tuwien-custom`.
-
-## Architecture
-
-### Files Structure
-
-```
-plugins/tuwien/
-├── apps/
-│   ├── TuWienCustomApp.tsx          # Main app component
-│   └── tuwien-custom-app-plugin.ts  # Plugin registration
-├── main.tsx                         # Standalone entry point
-├── index.html                       # HTML template
-├── vite.config.ts                   # Vite configuration
-├── package.json                     # Dependencies and scripts
-├── tsconfig.json                    # TypeScript configuration
-└── README.md                        # This file
-```
-
-### Key Components
-
-1. **TuWienCustomApp.tsx**: Main application component wrapped with `AdaptiveAppWrapper`
-2. **main.tsx**: Standalone bootstrap using `bootstrapStandaloneApp`
-3. **tuwien-custom-app-plugin.ts**: Plugin registration for core shell integration
-
-### Adaptive Execution
-
-The app uses `AdaptiveAppWrapper` to automatically detect its execution context:
-
-- **Core Shell**: Renders within the main application
-- **Standalone**: Provides full provider context independently
-
-## Configuration
-
-### Port Assignment
-
-- **Development**: Port 3005
-- **Preview**: Port 3105
-- **Base URL**: `/tuwien-custom`
-
-### Dependencies
-
-The plugin uses workspace dependencies for seamless integration:
-
-- `@workspace/app-runtime`: Standalone execution support
-- `@workspace/ui`: Shared UI components
-- `@workspace/plugin-system`: Plugin architecture
-- `@workspace/router`: Application routing
-- `@workspace/query`: Data fetching
-
-## Usage Examples
-
-### Running Standalone
-
-```bash
-cd plugins/tuwien
-pnpm dev
-# Visit http://127.0.0.1:3005
-```
-
-### Building for Production
-
-```bash
-cd plugins/tuwien
+cd .local-plugins/tuwien
 pnpm build
-pnpm preview
-# Visit http://127.0.0.1:3105
 ```
 
-### Integration with Core Shell
+### Other Commands
 
-The app automatically appears in the core shell navigation when the TU Wien plugin is loaded.
+```bash
+pnpm check-types   # TypeScript type checking
+pnpm lint          # ESLint
+pnpm clean         # Remove all build artifacts
+```
 
-## Customization
+## Theme
 
-To create your own university plugin app:
+The TU Wien theme (`themes/tuwien.css`) overrides CSS custom properties used by the Management UI and is packaged with the backend JAR for production use.
 
-1. Copy the TU Wien plugin structure
-2. Update the package name and ports
-3. Modify the app component for your specific needs
-4. Register the plugin in your university's implementation index
+## License
 
-## Benefits
-
-- **Independent Development**: Develop and test without loading the entire core shell
-- **Full Context**: Access to all providers and services
-- **Consistent Experience**: Same UI and functionality in both modes
-- **Easy Deployment**: Can be deployed independently or as part of the core system
+This plugin is part of the Management UI project and follows the same licensing terms.

@@ -19,7 +19,7 @@
     <checkstyle.suppressions.file>${project.basedir}/../../../docs/checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.file>
   </properties>
 
-  <description>JAR for the TU Wien plugin (.local-plugins/tuwien). Copies frontend bundles from dist/ and themes/ so the backend can expose them directly via plugins.json.</description>
+  <description>JAR for the TU Wien plugin (.local-plugins/tuwien). Copies split frontend bundles from dist/, locales from modules/, and the TU Wien theme so the backend can expose one plugins.json entry per module.</description>
 
   <build>
     <plugins>
@@ -96,6 +96,25 @@
             </configuration>
           </execution>
           <execution>
+            <id>copy-plugin-json</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static/plugins/tuwien</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/..</directory>
+                  <includes>
+                    <include>plugin.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
             <id>copy-themes</id>
             <phase>generate-resources</phase>
             <goals>
@@ -124,35 +143,35 @@
               <outputDirectory>${basedir}/target/classes/static/plugins/tuwien/locales</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${basedir}/../implementations/episodes/locales</directory>
+                  <directory>${basedir}/../modules/episodes/locales</directory>
                   <includes>
                     <include>**/*.json</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
                 <resource>
-                  <directory>${basedir}/../implementations/series/locales</directory>
+                  <directory>${basedir}/../modules/series/locales</directory>
                   <includes>
                     <include>**/*.json</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
                 <resource>
-                  <directory>${basedir}/../implementations/footer/locales</directory>
+                  <directory>${basedir}/../modules/footer/locales</directory>
                   <includes>
                     <include>**/*.json</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
                 <resource>
-                  <directory>${basedir}/../implementations/landing-page/locales</directory>
+                  <directory>${basedir}/../modules/landing-page/locales</directory>
                   <includes>
                     <include>**/*.json</include>
                   </includes>
                   <filtering>false</filtering>
                 </resource>
                 <resource>
-                  <directory>${basedir}/../implementations/table-sidebar/locales</directory>
+                  <directory>${basedir}/../modules/table-sidebar/locales</directory>
                   <includes>
                     <include>**/*.json</include>
                   </includes>
@@ -169,7 +188,6 @@
         <configuration>
           <instructions>
             <Management-Plugin>tuwien</Management-Plugin>
-            <Management-Plugin-I18n>tuwien-episodes, tuwien-series, tuwien-footer, tuwien-landing-page, tuwien-acl</Management-Plugin-I18n>
             <Http-Alias>/management-ui/static/plugins/tuwien</Http-Alias>
             <Http-Classpath>/static/plugins/tuwien</Http-Classpath>
             <Include-Resource>static/=target/classes/static</Include-Resource>

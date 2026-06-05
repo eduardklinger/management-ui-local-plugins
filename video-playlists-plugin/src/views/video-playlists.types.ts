@@ -1,5 +1,5 @@
-import type { GetAllManagedAclsQuery, GetMyEventsQuery } from "@workspace/query";
-import type { AclData } from "@workspace/ui/components";
+import type { GetAllManagedAclsQuery, GetMyEventsQuery } from "@oc-mui/query";
+import type { AclData } from "@oc-mui/ui/components";
 
 import type { Dispatch, ReactNode, SetStateAction } from "react";
 

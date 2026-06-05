@@ -12,7 +12,7 @@ This plugin uses a **hybrid approach**:
 ### React Query Integration (Important)
 
 The Management UI host provides the `QueryClientProvider`. The plugin must use
-`@workspace/query` hooks (not `@tanstack/react-query` directly) so it shares the
+`@oc-mui/query` hooks (not `@tanstack/react-query` directly) so it shares the
 host client instance. Otherwise you'll see:
 
 ```

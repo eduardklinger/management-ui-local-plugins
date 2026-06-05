@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import { useGetAllManagedAclsQuery, type GetAllManagedAclsQuery } from "@workspace/query";
+import { useGetAllManagedAclsQuery, type GetAllManagedAclsQuery } from "@oc-mui/query";
 import {
   AclEditor,
   type ACLEntry,
   type AclData,
   type ManagedACLEntry,
-} from "@workspace/ui/components";
+} from "@oc-mui/ui/components";
 
 export interface VideoPlaylistsAclEditorProps {
   aclData?: AclData | null;

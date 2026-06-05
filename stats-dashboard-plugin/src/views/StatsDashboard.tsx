@@ -7,8 +7,8 @@
 
 import { BarChart3, Calendar, CheckCircle2, Clock, Play, XCircle, AlertCircle } from "lucide-react";
 import React, { useMemo } from "react";
-import { useQuery, useQueries } from "@workspace/query";
-import { useGetMyEventsQuery, EventFilter } from "@workspace/query";
+import { useQuery, useQueries } from "@oc-mui/query";
+import { useGetMyEventsQuery, EventFilter } from "@oc-mui/query";
 
 import {
   Card,
@@ -16,7 +16,7 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-} from "@workspace/ui/components";
+} from "@oc-mui/ui/components";
 
 /**
  * Stat configuration from STATS.json

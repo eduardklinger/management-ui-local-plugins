@@ -24,7 +24,7 @@ const config: CodegenConfig = {
         {
           add: {
             content:
-              'import type { UseQueryResult, UseSuspenseQueryResult } from "@workspace/query";',
+              'import type { UseQueryResult, UseSuspenseQueryResult } from "@oc-mui/query";',
           },
         },
         {

@@ -21,7 +21,7 @@ import {
   PopoverContent,
   PopoverTrigger,
   Textarea,
-} from "@workspace/ui/components";
+} from "@oc-mui/ui/components";
 
 import { moveEntry } from "../video-playlists.utils";
 

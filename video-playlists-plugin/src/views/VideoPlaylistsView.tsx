@@ -1,8 +1,8 @@
 import { Edit, Loader2, Plus, RefreshCw, Search, Trash2 } from "lucide-react";
 import { useCallback, useState } from "react";
 
-import { ComponentResolver } from "@workspace/plugin-system";
-import { useMutation, useQueryClient } from "@workspace/query";
+import { ComponentResolver } from "@oc-mui/plugin-system";
+import { useMutation, useQueryClient } from "@oc-mui/query";
 import {
   Button,
   Card,
@@ -18,7 +18,7 @@ import {
   TableHeader,
   TableRow,
   type AclData,
-} from "@workspace/ui/components";
+} from "@oc-mui/ui/components";
 
 import { PlaylistEditorDialog } from "./components/PlaylistEditorDialog";
 import { useVideoPlaylistsData } from "./hooks/useVideoPlaylistsData";

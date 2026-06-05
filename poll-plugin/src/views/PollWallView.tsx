@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-import { Button, Input } from "@workspace/ui/components";
+import { Button, Input } from "@oc-mui/ui/components";
 import { Copy, ExternalLink, Loader2, PlusCircle, RefreshCw, Trash2 } from "lucide-react";
 
 import { usePollData } from "../hooks/usePollData";

@@ -1,6 +1,6 @@
 import { CloudRain } from "lucide-react";
 
-import { createPlugin, type PluginManager } from "@workspace/plugin-system";
+import { createPlugin, type PluginManager } from "@oc-mui/plugin-system";
 
 import { CyanCatRainView } from "./views/CyanCatRainView";
 

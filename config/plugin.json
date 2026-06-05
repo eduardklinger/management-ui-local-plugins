@@ -3,7 +3,7 @@
   "id": "plugin-config",
   "name": "Root Config",
   "version": "1.0.0",
-  "description": "Single root app config for .local-plugins (theme, pluginNamespace, URLs).",
+  "description": "Single root app config for .local-plugins (theme, enabledPlugins, URLs).",
   "author": {
     "name": "Management UI Team"
   },
@@ -15,6 +15,6 @@
   "entry": "dist/plugin-config.mjs",
   "icon": "Settings",
   "workspaceDependencies": {
-    "@workspace/plugin-system": ">=1.0.0"
+    "@oc-mui/plugin-system": ">=1.0.0"
   }
 }

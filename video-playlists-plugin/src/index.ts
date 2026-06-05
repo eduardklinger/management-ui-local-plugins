@@ -1,5 +1,5 @@
 import { List } from "lucide-react";
-import { createPlugin, type PluginManager } from "@workspace/plugin-system";
+import { createPlugin, type PluginManager } from "@oc-mui/plugin-system";
 
 import { VideoPlaylistsView } from "./views/VideoPlaylistsView";
 

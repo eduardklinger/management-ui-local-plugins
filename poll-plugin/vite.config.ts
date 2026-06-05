@@ -6,7 +6,7 @@
  *
  * Key points:
  * - Library mode produces a single .mjs file
- * - React and @workspace/* packages are external (provided by host)
+ * - React and @oc-mui/* packages are external (provided by host)
  * - GraphQL fragments in src/**\/*.graphql are auto-extracted
  */
 import { resolve } from "path";
@@ -53,7 +53,7 @@ export default defineConfig({
         }
 
         // All workspace packages (check both package name and resolved paths)
-        if (id.startsWith("@workspace/") || id.includes("/packages/")) {
+        if (id.startsWith("@oc-mui/") || id.includes("/packages/")) {
           return true;
         }
 
@@ -63,7 +63,7 @@ export default defineConfig({
         }
 
         // Additional workspace packages that might be imported
-        if (id.startsWith("@workspace/query") || id.includes("/packages/query")) {
+        if (id.startsWith("@oc-mui/query") || id.includes("/packages/query")) {
           return true;
         }
 

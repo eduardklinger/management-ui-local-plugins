@@ -8,7 +8,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@workspace/ui/components";
+} from "@oc-mui/ui/components";
 
 interface CatDrop {
   id: number;

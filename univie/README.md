@@ -1,115 +1,43 @@
-# UniVie Event Calendar Plugin
+# University of Vienna Plugin
 
-A comprehensive event calendar plugin for University of Vienna (UniVie) that provides room scheduling and event management capabilities.
+Organization plugin for the [Management UI](https://github.com/academic-moodle-cooperation/management-tool), providing University of Vienna branding, navigation, and custom UI components.
 
-## Features
+## Modules
 
-- **Real-time Event Display**: Shows events from UniVie's digital signage API
-- **Room Management**: Filter and select specific rooms to view
-- **Date Navigation**: Navigate between different dates with intuitive controls
-- **Responsive Design**: Works on desktop and mobile devices
-- **Event Details**: Comprehensive event information including time, location, and participants
-- **Auto-refresh**: Periodic data refresh to ensure up-to-date information
+| Module | Type | Description |
+|--------|------|-------------|
+| `empty-state` | App | Empty state with university-specific links |
+| `sidebar` | Sidebar | Custom navigation, header logo, and sidebar footer |
+| `footer` | Footer | University-branded footer |
+| `landing-page` | Landing page | Univie-branded landing/info page |
 
-## API Integration
+## Project Structure
 
-The plugin integrates with two REST endpoints:
-
-- `GET /digitalsignage/v1/getAllRaeume` - Fetches all available rooms
-- `GET /digitalsignage/v1/findRaumbelegungenByDays?days=1` - Fetches events by day
-
-## Configuration
-
-### Environment Variables
-
-Set the following environment variable in your `.env` file:
-
-```env
-VITE_UNIVIE_API_BASE_URL=https://your-api-domain.com
+```
+univie/
+├── modules/
+│   ├── sidebar/                # Sidebar components + i18n (de/en)
+│   ├── footer/                 # Footer component + i18n (de/en)
+│   ├── landing-page/           # Landing page component + i18n (de/en)
+│   └── empty-state/            # Empty state component + i18n (de/en)
+├── src/
+│   ├── index.ts                # Single-entry for remote loading (all modules)
+│   ├── pluginAssetUrl.ts       # Asset URL resolver
+│   └── styles/plugin.css       # Plugin CSS (Tailwind utilities)
+├── assets/                     # Logo assets (PNG, SVG)
+├── themes/univie.css           # University of Vienna CSS theme
+├── backend/pom.xml             # Maven JAR build (bundles frontend for OSGi)
+├── plugin.json                 # Plugin manifest
+└── plugin-metadata.json        # Marketplace metadata
 ```
 
-### Room Filtering
+Each module under `modules/` is a self-contained Vite entry point that produces a separate `.mjs` bundle. `src/index.ts` is an alternative single-entry that registers all modules at once (used for remote loading).
 
-The plugin filters rooms to show only a configured list of room IDs. To modify the allowed rooms, edit the `DEFAULT_CONFIG` in `components/api/eventCalendarApi.ts`:
+## Internationalization
 
-```typescript
-const DEFAULT_CONFIG: EventCalendarConfig = {
-  allowedRoomIds: [1001, 1002, 1003, 2001, 2002], // Your room IDs here
-  apiBaseUrl: process.env.VITE_UNIVIE_API_BASE_URL || "https://api.example.com",
-};
-```
+All modules ship with German (`de`) and English (`en`) translations.
 
-## Usage
-
-### Standalone Execution
-
-To run the event calendar as a standalone application:
-
-```bash
-cd plugins/univie
-pnpm dev
-```
-
-The app will be available at `http://127.0.0.1:3006`
-
-### Core Shell Integration
-
-The plugin automatically registers with the core shell when loaded, providing:
-
-- Route: `/univie-calendar`
-- Navigation title: "Event Calendar"
-- Icon: "calendar"
-- Required permission: `access_univie_calendar`
-
-## Data Models
-
-### Room Model
-
-```typescript
-interface Room {
-  extRaumId: number;
-  nummer: string;
-  stockwerk: string;
-  raumArtNeuCode: string;
-  raumArtNeuBezeichnung: string;
-  extGebaeudeId: number;
-  gebaeudeName: string;
-  gebaeudeNummer: string;
-  gebaeudeStrasse: string;
-  gebaeudePlz: string;
-  gebaeudeOrt: string;
-  gebaeudeLand: string;
-  uscreenRaum: string;
-}
-```
-
-### Event Model
-
-```typescript
-interface Event {
-  extRaumId: number;
-  datum: string; // "02.08.2025"
-  beginn: string; // "08.00"
-  ende: string; // "20.00"
-  relationenName: string;
-  name: string;
-  lvKategorie: string;
-}
-```
-
-## Components
-
-- **CalendarView**: Main calendar interface
-- **EventCard**: Individual event display component
-- **RoomFilter**: Room selection and filtering interface
-
-## Future Improvements
-
-- Server-side filtering by room ID (currently filtered client-side)
-- Event creation and editing capabilities
-- Email notifications for event changes
-- Calendar export functionality
-- Integration with external calendar systems
+Namespaces: `univie-sidebar`, `univie-footer`, `univie-landing-page`, `univie-empty-state`.
 
 ## Development
 
@@ -118,39 +46,28 @@ interface Event {
 - Node.js 20+
 - pnpm 10+
 
-### Setup
+### Build
 
-1. Install dependencies:
-
-   ```bash
-   pnpm install
-   ```
-
-2. Start development server:
-
-   ```bash
-   pnpm dev
-   ```
-
-3. Build for production:
-   ```bash
-   pnpm build
-   ```
-
-### Testing
-
-Run type checking:
+From the monorepo root (so `@oc-mui/*` dependencies resolve):
 
 ```bash
-pnpm check-types
+pnpm install
+cd .local-plugins/univie
+pnpm build
 ```
 
-Run linting:
+### Other Commands
 
 ```bash
-pnpm lint
+pnpm check-types   # TypeScript type checking
+pnpm lint           # ESLint
+pnpm clean          # Remove all build artifacts
 ```
+
+## Theme
+
+The University of Vienna theme (`themes/univie.css`) overrides CSS custom properties for primary colors, sidebar, and header/footer branding. It supports both light and dark modes.
 
 ## License
 
-This plugin is part of the management-ui project and follows the same licensing terms.
+This plugin is part of the Management UI project and follows the same licensing terms.

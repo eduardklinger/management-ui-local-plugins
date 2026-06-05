@@ -1,9 +1,9 @@
 /**
  * Root config plugin for .local-plugins.
- * Loaded first (namespace "config" is in default pluginNamespace); registers app:config
+ * Loaded first (namespace "config" is in default enabledPlugins); registers app:config
  * so phase 2 can load univie, tuwien, etc. from the same config.
  */
-import { createPlugin } from "@workspace/plugin-system";
+import { createPlugin } from "@oc-mui/plugin-system";
 
 import { config } from "./config";
 

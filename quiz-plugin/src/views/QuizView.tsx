@@ -10,9 +10,9 @@
  * - Convex for quiz data (real-time updates)
  */
 
-import { useParams } from "@workspace/router";
-import { useGetEventByIdQuery } from "@workspace/query";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@workspace/ui/components";
+import { useParams } from "@oc-mui/router";
+import { useGetEventByIdQuery } from "@oc-mui/query";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@oc-mui/ui/components";
 import { Loader2 } from "lucide-react";
 import { QuizForm } from "../components/QuizForm";
 import { QuizResults } from "../components/QuizResults";

@@ -1,4 +1,4 @@
-import { createPlugin } from "@workspace/plugin-system";
+import { createPlugin } from "@oc-mui/plugin-system";
 
 import { SeriesCreateAclEditor } from "./components/SeriesCreateAclEditor";
 

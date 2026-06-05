@@ -26,7 +26,7 @@ This is a template for creating community plugins for the Management UI.
    ```
    
    **Important:** 
-   - `@workspace/*` packages are provided by the host application (peerDependencies)
+   - `@oc-mui/*` packages are provided by the host application (peerDependencies)
    - Only `devDependencies` (like `rollup`, `vite`, etc.) need to be installed
    - `--no-frozen-lockfile` is needed when adding new packages to the workspace
 
@@ -46,7 +46,7 @@ If you're developing outside the monorepo:
    ```bash
    # Install only build tools, NOT @workspace packages
    pnpm install --ignore-workspace --no-frozen-lockfile
-   # Note: This will fail for @workspace/* packages - that's expected!
+   # Note: This will fail for @oc-mui/* packages - that's expected!
    # They will be provided by the host application at runtime
    ```
 4. **Build:**
@@ -54,7 +54,7 @@ If you're developing outside the monorepo:
    pnpm build
    ```
 
-**⚠️ Important:** `@workspace/*` packages are **peerDependencies** - they are provided by the Management UI host application at runtime, not installed during build.
+**⚠️ Important:** `@oc-mui/*` packages are **peerDependencies** - they are provided by the Management UI host application at runtime, not installed during build.
 
 5. **Test locally:**
    ```bash
@@ -73,8 +73,8 @@ If you're developing outside the monorepo:
 2. Run `pnpm install --no-frozen-lockfile` from the monorepo root
 3. The `rollup` and `vite` packages are in `devDependencies` and need to be installed
 
-### "@workspace/query is not in the npm registry"
-**This is expected!** `@workspace/*` packages are provided by the host application at runtime. They are `peerDependencies`, not regular dependencies. You don't need to install them - just make sure your plugin is loaded in the Management UI context.
+### "@oc-mui/query is not in the npm registry"
+**This is expected!** `@oc-mui/*` packages are provided by the host application at runtime. They are `peerDependencies`, not regular dependencies. You don't need to install them - just make sure your plugin is loaded in the Management UI context.
 
 ### "Lockfile doesn't match package.json"
 **Solution:** Run `pnpm install --no-frozen-lockfile` from the monorepo root when adding a new plugin to the workspace.
@@ -82,7 +82,7 @@ If you're developing outside the monorepo:
 ### Build succeeds but plugin doesn't load
 - Check browser console for errors
 - Verify the plugin URL in Developer Mode
-- Ensure all `@workspace/*` imports are in `peerDependencies` (not `dependencies`)
+- Ensure all `@oc-mui/*` imports are in `peerDependencies` (not `dependencies`)
 
 ## Quick Checklist
 
@@ -121,7 +121,7 @@ The `pluginMetadata` in `package.json` is used by the Marketplace:
     "icon": "Puzzle",
     "tags": ["example", "community"],
     "workspaceDependencies": {
-      "@workspace/plugin-system": ">=1.0.0"
+      "@oc-mui/plugin-system": ">=1.0.0"
     }
   }
 }
@@ -150,20 +150,20 @@ The `pluginMetadata` in `package.json` is used by the Marketplace:
 
 ### Using Workspace Packages
 
-Your plugin can use packages from `@workspace/*` and some external libraries:
+Your plugin can use packages from `@oc-mui/*` and some external libraries:
 
 ```typescript
 // UI Components
-import { Button, Card } from "@workspace/ui/components";
+import { Button, Card } from "@oc-mui/ui/components";
 
 // Data fetching
-import { useGetMyEventsQuery } from "@workspace/query";
+import { useGetMyEventsQuery } from "@oc-mui/query";
 
 // Routing
-import { useNavigate } from "@workspace/router";
+import { useNavigate } from "@oc-mui/router";
 
 // Translations
-import { useI18n } from "@workspace/i18n";
+import { useI18n } from "@oc-mui/i18n";
 
 // Icons (available)
 import { BarChart3, Calendar } from "lucide-react";

@@ -3,7 +3,7 @@
  * Builds one real bundle per plugin type so dev and production expose the
  * same deployable units.
  */
-import { createBaseConfig } from "@workspace/vite-config";
+import { createBaseConfig } from "@oc-mui/vite-config";
 import { defineConfig } from "vite";
 import { resolve } from "path";
 
@@ -16,10 +16,10 @@ const tailwindPackageRoot = resolve(
   "node_modules/.pnpm/node_modules/tailwindcss",
 );
 const entryPoints = {
-  "plugin-univie-app": resolve(pluginRoot, "src/entries/app.ts"),
-  "plugin-univie-footer": resolve(pluginRoot, "src/entries/footer.ts"),
-  "plugin-univie-landing-page": resolve(pluginRoot, "src/entries/landing-page.ts"),
-  "plugin-univie-sidebar": resolve(pluginRoot, "src/entries/sidebar.ts"),
+  "plugin-univie-app": resolve(pluginRoot, "modules/empty-state/index.ts"),
+  "plugin-univie-footer": resolve(pluginRoot, "modules/footer/index.ts"),
+  "plugin-univie-landing-page": resolve(pluginRoot, "modules/landing-page/index.ts"),
+  "plugin-univie-sidebar": resolve(pluginRoot, "modules/sidebar/index.ts"),
 };
 
 export default defineConfig(({ mode }) => {
@@ -60,7 +60,7 @@ export default defineConfig(({ mode }) => {
           ) {
             return true;
           }
-          if (id.startsWith("@workspace/") || id.includes("/packages/")) return true;
+          if (id.startsWith("@oc-mui/") || id.includes("/packages/")) return true;
           if (id === "lucide-react" || id.startsWith("lucide-react/")) return true;
           return false;
         },

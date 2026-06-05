@@ -1,5 +1,4 @@
 {
-  "$schema": "../../packages/plugin-system/src/schemas/plugin.schema.json",
   "id": "plugin-univie",
   "name": "University of Vienna",
   "version": "1.0.0",
@@ -38,9 +37,11 @@
       "css": "dist/univie-plugin.css"
     }
   ],
+  "locales": "locales",
+  "i18nNamespaces": ["univie-sidebar", "univie-footer", "univie-landing-page", "univie-empty-state"],
   "icon": "School",
   "replacesJarScopes": ["management_ui_plugin_univie"],
   "workspaceDependencies": {
-    "@workspace/plugin-system": ">=1.0.0"
+    "@oc-mui/plugin-system": ">=1.0.0"
   }
 }

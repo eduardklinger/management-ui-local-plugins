@@ -1,4 +1,4 @@
-import { shadcnPreset } from "@workspace/tailwind-config/preset";
+import { shadcnPreset } from "@oc-mui/tailwind-config/preset";
 
 import type { Config } from "tailwindcss";
 
@@ -6,7 +6,6 @@ export default {
   presets: [shadcnPreset],
   content: [
     "./src/**/*.{ts,tsx}",
-    "./implementations/**/*.{ts,tsx}",
-    "./apps/**/*.{ts,tsx}",
+    "./modules/**/*.{ts,tsx}",
   ],
 } satisfies Config;

@@ -6,11 +6,11 @@
   "pluginMetadata": {
     "id": "plugin-config",
     "name": "Root Config",
-    "description": "Single root app config for .local-plugins (theme, pluginNamespace, URLs).",
+    "description": "Single root app config for .local-plugins (theme, enabledPlugins, URLs).",
     "category": "config",
     "icon": "Settings",
     "workspaceDependencies": {
-      "@workspace/plugin-system": ">=1.0.0"
+      "@oc-mui/plugin-system": ">=1.0.0"
     }
   },
   "main": "./dist/plugin-config.mjs",
@@ -21,7 +21,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@workspace/plugin-system": "workspace:*"
+    "@oc-mui/plugin-system": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^25.0.6",

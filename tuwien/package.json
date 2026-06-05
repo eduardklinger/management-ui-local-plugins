@@ -6,34 +6,42 @@
   "pluginMetadata": {
     "id": "plugin-tuwien",
     "name": "TU Wien",
-    "description": "TU Wien plugin: config, sidebar, footer, header, landing page, episodes/series actions, custom app.",
+    "description": "TU Wien plugin: sidebar, footer, header, landing page, table sidebar, upload ACL editor, episodes/series actions, navigation, and custom app.",
     "category": "feature",
     "icon": "Building2",
     "workspaceDependencies": {
-      "@workspace/plugin-system": ">=1.0.0"
+      "@oc-mui/plugin-system": ">=1.0.0"
     }
   },
-  "main": "./dist/plugin-tuwien.mjs",
+  "main": "./src/index.ts",
   "exports": {
-    ".": "./dist/plugin-tuwien.mjs"
+    ".": "./src/index.ts",
+    "./app": "./dist/plugin-tuwien-app.mjs",
+    "./episodes-actions": "./dist/plugin-tuwien-episodes-actions.mjs",
+    "./footer": "./dist/plugin-tuwien-footer.mjs",
+    "./header": "./dist/plugin-tuwien-header.mjs",
+    "./landing-page": "./dist/plugin-tuwien-landing-page.mjs",
+    "./navigation": "./dist/plugin-tuwien-navigation.mjs",
+    "./series-actions": "./dist/plugin-tuwien-series-actions.mjs",
+    "./sidebar": "./dist/plugin-tuwien-sidebar.mjs",
+    "./table-sidebar": "./dist/plugin-tuwien-table-sidebar.mjs",
+    "./upload-acl-editor": "./dist/plugin-tuwien-upload-acl-editor.mjs"
   },
   "files": ["dist"],
   "scripts": {
     "clean": "rm -rf .turbo && rm -rf dist && rm -rf dist-types && rm -rf target && rm -rf node_modules && rm -rf coverage && rm -f *.tsbuildinfo && rm -f tsconfig*.tsbuildinfo",
-    "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
     "lint": "eslint . --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@workspace/app-runtime": "workspace:*",
-    "@workspace/i18n": "workspace:*",
-    "@workspace/plugin-system": "workspace:*",
-    "@workspace/query": "workspace:*",
-    "@workspace/router": "workspace:*",
-    "@workspace/ui": "workspace:*",
-    "@workspace/utils": "workspace:*",
+    "@oc-mui/app-runtime": "workspace:*",
+    "@oc-mui/i18n": "workspace:*",
+    "@oc-mui/plugin-system": "workspace:*",
+    "@oc-mui/query": "workspace:*",
+    "@oc-mui/router": "workspace:*",
+    "@oc-mui/ui": "workspace:*",
+    "@oc-mui/utils": "workspace:*",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
   },

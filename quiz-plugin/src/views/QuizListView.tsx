@@ -5,9 +5,9 @@
  * This is the base route for /quiz when no eventId is provided.
  */
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@workspace/ui/components";
-import { useGetMyEventsQuery } from "@workspace/query";
-import { Link } from "@workspace/router";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@oc-mui/ui/components";
+import { useGetMyEventsQuery } from "@oc-mui/query";
+import { Link } from "@oc-mui/router";
 import { Loader2 } from "lucide-react";
 
 export const QuizListView = () => {

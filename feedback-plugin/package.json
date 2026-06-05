@@ -24,9 +24,9 @@
       "communication"
     ],
     "workspaceDependencies": {
-      "@workspace/plugin-system": ">=1.0.0",
-      "@workspace/ui": ">=1.0.0",
-      "@workspace/query": ">=1.0.0"
+      "@oc-mui/plugin-system": ">=1.0.0",
+      "@oc-mui/ui": ">=1.0.0",
+      "@oc-mui/query": ">=1.0.0"
     }
   },
   "main": "./dist/feedback.mjs",
@@ -45,9 +45,9 @@
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
-    "@workspace/plugin-system": "*",
-    "@workspace/ui": "*",
-    "@workspace/query": "*",
+    "@oc-mui/plugin-system": "*",
+    "@oc-mui/ui": "*",
+    "@oc-mui/query": "*",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0",
     "lucide-react": "*"

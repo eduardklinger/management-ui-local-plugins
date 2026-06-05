@@ -6,7 +6,7 @@
  */
 
 import { BarChart3 } from "lucide-react";
-import { createPlugin } from "@workspace/plugin-system";
+import { createPlugin } from "@oc-mui/plugin-system";
 
 import { StatsDashboard } from "./views/StatsDashboard";
 

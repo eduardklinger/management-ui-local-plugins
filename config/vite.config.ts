@@ -23,7 +23,7 @@ export default defineConfig({
     minify: true,
     rollupOptions: {
       external: (id) =>
-        id.startsWith("@workspace/") || id.includes("/packages/"),
+        id.startsWith("@oc-mui/") || id.includes("/packages/"),
       output: {
         exports: "named",
         generatedCode: { constBindings: true },

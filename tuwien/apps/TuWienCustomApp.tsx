@@ -1,11 +1,10 @@
 import React from "react";
 
-import { AdaptiveAppWrapper } from "@workspace/app-runtime";
-import { Button, Container } from "@workspace/ui/components";
+import { AdaptiveAppWrapper } from "@oc-mui/app-runtime";
+import { Button, Container } from "@oc-mui/ui/components";
 
 /**
- * Example TU Wien custom app component
- * This component can run both in the core shell and as a standalone app
+ * Example TU Wien custom app component registered through the plugin system.
  */
 export const TuWienCustomApp: React.FC = () => {
   return (
@@ -15,8 +14,8 @@ export const TuWienCustomApp: React.FC = () => {
           <h1 className="text-3xl font-bold mb-4">TU Wien Custom Application</h1>
           <p className="text-lg mb-6">
             This is a custom application specifically created for TU Wien through the plugin system.
-            It demonstrates how universities can add their own applications via the /plugins folder.
-            This app can run both within the core shell and as a standalone application.
+            It demonstrates how universities can add their own applications as
+            plugin-provided routes inside the Management UI.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -27,7 +26,7 @@ export const TuWienCustomApp: React.FC = () => {
                 <li>Custom data views</li>
                 <li>Integration with TU Wien systems</li>
                 <li>Branded user interface</li>
-                <li>Standalone execution capability</li>
+                <li>Plugin-provided navigation entry</li>
               </ul>
             </div>
 
@@ -55,9 +54,9 @@ export const TuWienCustomApp: React.FC = () => {
             <h3 className="text-lg font-semibold mb-2">Development Note</h3>
             <p className="text-sm text-gray-700">
               This app is registered through the plugin system and can be developed independently
-              from the core application. It can access all the same providers (auth, query, theme)
-              and UI components as core apps. It can run standalone on port 3005 or within the core
-              shell.
+              from the core application. It can access the same providers and UI
+              components that core apps use while staying packaged as a remote
+              TU Wien plugin module.
             </p>
           </div>
         </div>

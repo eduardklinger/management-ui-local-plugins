@@ -44,7 +44,7 @@ export default defineConfig({
           return true;
         }
 
-        if (id.startsWith("@workspace/") || id.includes("/packages/")) {
+        if (id.startsWith("@oc-mui/") || id.includes("/packages/")) {
           return true;
         }
 
@@ -52,7 +52,7 @@ export default defineConfig({
           return true;
         }
 
-        if (id.startsWith("@workspace/query") || id.includes("/packages/query")) {
+        if (id.startsWith("@oc-mui/query") || id.includes("/packages/query")) {
           return true;
         }
 

@@ -136,5 +136,5 @@ pnpm ts-node ../../packages/plugin-system/scripts/export-registry.ts ./plugin-me
 
 ## Notes
 
-- `@workspace/*` packages are runtime host dependencies, not bundled plugin dependencies.
+- `@oc-mui/*` packages are runtime host dependencies, not bundled plugin dependencies.
 - Keep plugin id, metadata id, and built output file aligned (`cyan-cat-rain`) to avoid load issues.

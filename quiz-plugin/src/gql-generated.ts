@@ -6,7 +6,7 @@
 import {
   useMutation,
   type UseMutationOptions,
-} from "@workspace/query";
+} from "@oc-mui/query";
 import { fetchData } from "./fetcher";
 
 // --- CreateQuiz ---

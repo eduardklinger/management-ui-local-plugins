@@ -1,5 +1,5 @@
-import { createPlugin, type PluginManager } from "@workspace/plugin-system";
-import { logger } from "@workspace/utils";
+import { createPlugin, type PluginManager } from "@oc-mui/plugin-system";
+import { logger } from "@oc-mui/utils";
 
 import { TuWienCustomApp } from "./TuWienCustomApp";
 
@@ -40,3 +40,5 @@ export const tuWienCustomAppPlugin = createPlugin({
     logger.debug("TU Wien custom app plugin deactivated");
   },
 });
+
+export default tuWienCustomAppPlugin;

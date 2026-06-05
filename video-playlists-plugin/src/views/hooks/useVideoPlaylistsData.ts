@@ -6,7 +6,7 @@ import {
   useGetMyEventsQuery,
   useGetUserInfo,
   useQuery,
-} from "@workspace/query";
+} from "@oc-mui/query";
 
 import {
   MY_PLAYLISTS_QUERY,

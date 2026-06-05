@@ -23,7 +23,7 @@ import {
   SelectValue,
   Alert,
   AlertDescription,
-} from "@workspace/ui/components";
+} from "@oc-mui/ui/components";
 
 /**
  * Feedback categories

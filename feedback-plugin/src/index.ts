@@ -4,7 +4,7 @@
  * A community plugin for collecting and managing user feedback.
  */
 
-import { createPlugin } from "@workspace/plugin-system";
+import { createPlugin } from "@oc-mui/plugin-system";
 
 import { FeedbackView } from "./views/FeedbackView";
 

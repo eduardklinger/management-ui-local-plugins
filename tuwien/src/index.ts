@@ -5,7 +5,7 @@
  * that registers all TU Wien implementations when loaded via .local-plugins
  * or the Marketplace.
  */
-import { createPlugin } from "@workspace/plugin-system";
+import { createPlugin } from "@oc-mui/plugin-system";
 
 import { tuWienCustomAppPlugin } from "../apps/tuwien-custom-app-plugin";
 import {
@@ -18,7 +18,7 @@ import {
   studioNavImplementation,
   tuwienTableSidebarImplementation,
   tuwienUploadAclEditorImplementation,
-} from "../implementations/index";
+} from "../modules/index";
 
 const pluginTuwien = createPlugin({
   namespace: "tuwien",

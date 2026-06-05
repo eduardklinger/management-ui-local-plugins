@@ -16,7 +16,7 @@ export const config = {
       return `${pluginPath}/assets/logo.png`;
     })(),
     faviconUrl: "/management-ui/assets/favicon/favicon.svg",
-    pluginNamespace: [
+    enabledPlugins: [
       "core",
       "episodes",
       "series",
@@ -28,25 +28,12 @@ export const config = {
       "series-create-acl-editor-plugin",
       "video-playlists-plugin",
       "video-playlists-acl-editor-plugin",
-      {
-        univie: {
-          types: ["app", "footer", "landing-page", "sidebar", "navigation"],
-        },
-        // tuwien: {
-        //   types: [
-        //     "config",
-        //     "app",
-        //     "episodes-actions",
-        //     "series-actions",
-        //     "footer",
-        //     "header",
-        //     "landing-page",
-        //     "sidebar",
-        //     "table-sidebar",
-        //     "navigation",
-        //   ],
-        // },
-      },
+      "univie",
+      // tuwien — uncomment when active; per-type filtering from the old
+      // pluginNamespace model is gone (Phase 2b). To disable a specific
+      // module of an org plugin, use config.plugins[<id>].enabled = false
+      // on the corresponding plugin's slice instead.
+      // "tuwien",
     ],
   },
   plugins: {

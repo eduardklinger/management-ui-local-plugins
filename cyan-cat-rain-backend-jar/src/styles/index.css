@@ -1,7 +1,8 @@
 /**
  * Plugin Styles
  *
- * Tailwind v4: use @import "tailwindcss" to pull in base, components, and utilities.
+ * Tailwind v4: use explicit layers so plugin CSS stays predictable and
+ * host overrides are deliberate instead of order-sensitive.
  * All Tailwind classes used in your plugin components will be generated here.
  *
  * This CSS is bundled with your plugin and loaded automatically when
@@ -9,8 +10,10 @@
  */
 
 /* Avoid Tailwind preflight overriding core app fonts */
-@import "tailwindcss/theme";
-@import "tailwindcss/utilities";
+@layer theme, base, components, utilities, plugin-overrides;
+
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
 @source "../**/*.{ts,tsx,js,jsx}";
 
 .cat-demo-controls {

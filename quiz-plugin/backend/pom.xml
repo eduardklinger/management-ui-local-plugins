@@ -98,6 +98,25 @@
               </resources>
             </configuration>
           </execution>
+          <execution>
+            <id>copy-plugin-json</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/classes/static/plugins/quiz</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/..</directory>
+                  <includes>
+                    <include>plugin.json</include>
+                  </includes>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
 

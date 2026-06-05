@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Button } from "@workspace/ui/components";
+import { Button } from "@oc-mui/ui/components";
 
 interface NyanCat {
   id: number;

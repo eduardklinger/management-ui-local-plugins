@@ -6,7 +6,7 @@
  * - Class statistics (if available)
  */
 
-import { Card, CardHeader, CardTitle, CardContent } from "@workspace/ui/components";
+import { Card, CardHeader, CardTitle, CardContent } from "@oc-mui/ui/components";
 import { CheckCircle2, XCircle, Trophy } from "lucide-react";
 
 interface Submission {

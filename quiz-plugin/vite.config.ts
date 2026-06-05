@@ -40,7 +40,7 @@ export default defineConfig({
         }
 
         // All workspace packages
-        if (id.startsWith("@workspace/") || id.includes("/packages/")) {
+        if (id.startsWith("@oc-mui/") || id.includes("/packages/")) {
           return true;
         }
 

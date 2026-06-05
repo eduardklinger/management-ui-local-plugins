@@ -6,7 +6,7 @@
  */
 
 import { useState } from "react";
-import { Button, Card, CardHeader, CardTitle, CardDescription, CardContent, Input, Textarea } from "@workspace/ui/components";
+import { Button, Card, CardHeader, CardTitle, CardDescription, CardContent, Input, Textarea } from "@oc-mui/ui/components";
 import { Plus, Trash2 } from "lucide-react";
 import { useCreateQuizMutation } from "../gql-generated";
 

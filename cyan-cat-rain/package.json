@@ -13,8 +13,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@workspace/plugin-system": "workspace:*",
-    "@workspace/ui": "workspace:*",
+    "@oc-mui/plugin-system": "workspace:*",
+    "@oc-mui/ui": "workspace:*",
     "lucide-react": "^0.417.0",
     "react": "^19.1.0"
   },
@@ -22,14 +22,14 @@
     "@types/react": "^18.0.0 || ^19.0.0",
     "@types/react-dom": "^18.0.0 || ^19.0.0",
     "@vitejs/plugin-react-swc": "^3.9.0",
-    "@workspace/tailwind-config": "workspace:*",
+    "@oc-mui/tailwind-config": "workspace:*",
     "eslint": "^9.20.0",
     "rollup": "^4.44.2",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.3.3",
     "vite": "^6.0.0",
-    "@workspace/eslint-config": "workspace:*",
-    "@workspace/typescript-config": "workspace:*"
+    "@oc-mui/eslint-config": "workspace:*",
+    "@oc-mui/typescript-config": "workspace:*"
   },
   "description": "Community plugin: plugin-cyan-cat-rain",
   "author": {
@@ -53,7 +53,7 @@
       "community"
     ],
     "workspaceDependencies": {
-      "@workspace/plugin-system": ">=1.0.0"
+      "@oc-mui/plugin-system": ">=1.0.0"
     }
   },
   "main": "./dist/cyan-cat-rain.mjs",
@@ -65,8 +65,8 @@
     "dist"
   ],
   "peerDependencies": {
-    "@workspace/plugin-system": "*",
-    "@workspace/ui": "*",
+    "@oc-mui/plugin-system": "*",
+    "@oc-mui/ui": "*",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
   }

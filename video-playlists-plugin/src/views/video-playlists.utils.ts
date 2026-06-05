@@ -1,4 +1,4 @@
-import type { AclData } from "@workspace/ui/components";
+import type { AclData } from "@oc-mui/ui/components";
 
 import type {
   AccessControlInput,

@@ -12,7 +12,7 @@
  */
 
 import { HelpCircle } from "lucide-react";
-import { createPlugin } from "@workspace/plugin-system";
+import { createPlugin } from "@oc-mui/plugin-system";
 import { QuizView } from "./views/QuizView";
 import { QuizListView } from "./views/QuizListView";
 

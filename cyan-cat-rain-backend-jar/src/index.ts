@@ -14,7 +14,7 @@ import "./styles/index.css";
 
 import { CloudRain } from "lucide-react";
 
-import { createPlugin } from "@workspace/plugin-system";
+import { createPlugin } from "@oc-mui/plugin-system";
 
 import { MyPluginView } from "./views/MyPluginView";
 

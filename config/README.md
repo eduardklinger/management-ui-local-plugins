@@ -1,8 +1,8 @@
 # Root config plugin (.local-plugins/config)
 
-Single app config for .local-plugins. Loaded first (namespace `"config"` is in default `pluginNamespace`); registers `app:config` so phase 2 loads univie, tuwien, etc.
+Single app config for .local-plugins. Loaded first (namespace `"config"` is in default `app.enabledPlugins`); registers `app:config` so phase 2 loads univie, tuwien, etc.
 
-- **Edit** `src/config.ts`: theme, orgLogoUrl, pluginNamespace, studioUrl, captureUrl, tobiraUrl.
+- **Edit** `src/config.ts`: theme, orgLogoUrl, enabledPlugins, studioUrl, captureUrl, tobiraUrl.
 - **Build:** `pnpm build` (from this directory or `pnpm --filter plugin-config build` from monorepo root).
 - **Result:** `dist/plugin-config.mjs`; core loads it in phase 1, then loads .local-plugins/univie and .local-plugins/tuwien in phase 2.
 

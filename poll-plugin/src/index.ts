@@ -1,7 +1,7 @@
 import "./styles/index.css";
 
 import { BarChart3 } from "lucide-react";
-import { createPlugin } from "@workspace/plugin-system";
+import { createPlugin } from "@oc-mui/plugin-system";
 
 import { PollWallView } from "./views/PollWallView";
 
