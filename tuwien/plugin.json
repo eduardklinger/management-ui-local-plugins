@@ -43,11 +43,6 @@
       "i18nNamespaces": ["tuwien-landing-page"]
     },
     {
-      "id": "navigation",
-      "type": "navigation",
-      "entry": "dist/plugin-tuwien-navigation.mjs"
-    },
-    {
       "id": "series-actions",
       "type": "series-actions",
       "entry": "dist/plugin-tuwien-series-actions.mjs",

@@ -14,7 +14,6 @@ const entryPoints = {
   "plugin-tuwien-footer": resolve(__dirname, "modules/footer/index.ts"),
   "plugin-tuwien-header": resolve(__dirname, "modules/header/index.ts"),
   "plugin-tuwien-landing-page": resolve(__dirname, "modules/landing-page/index.ts"),
-  "plugin-tuwien-navigation": resolve(__dirname, "modules/navigation/index.ts"),
   "plugin-tuwien-series-actions": resolve(__dirname, "modules/series/index.ts"),
   "plugin-tuwien-sidebar": resolve(__dirname, "modules/sidebar/index.ts"),
   "plugin-tuwien-table-sidebar": resolve(__dirname, "modules/table-sidebar/index.ts"),
